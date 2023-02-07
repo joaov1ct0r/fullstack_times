@@ -4,7 +4,9 @@
   "description": "",
   "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./build/index.js",
+    "dev": "ts-node-dev --transpile-only ./src/index.ts",
+    "build": "rimraf ./build && tsc"
   },
   "keywords": [],
   "author": "github.com/joaov1ct0r",
