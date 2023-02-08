@@ -1,5 +1,4 @@
 import IEditTimeRepository from "../../../interfaces/time/IEditTimeRepository";
-import ITime from "../../../interfaces/ITime";
 import prismaClient from "../../prismaClient";
 
 export default class EditTimeRepository implements IEditTimeRepository {
@@ -9,7 +8,7 @@ export default class EditTimeRepository implements IEditTimeRepository {
     this.repository = prismaClient;
   }
 
-  async execute(id: number, nome: string): Promise<ITime> {
+  async execute(id: number, nome: string) {
     const time = await this.repository.time.update({
       data: {
         nome,

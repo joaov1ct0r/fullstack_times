@@ -1,5 +1,4 @@
 import ICreateTimeRepository from "../../../interfaces/time/ICreateTimeRepository";
-import ITime from "../../../interfaces/ITime";
 import prismaClient from "../../prismaClient";
 
 export default class CreateTimeRepository implements ICreateTimeRepository {
@@ -9,7 +8,7 @@ export default class CreateTimeRepository implements ICreateTimeRepository {
     this.repository = prismaClient;
   }
 
-  async execute(nome: string): Promise<ITime> {
+  async execute(nome: string) {
     const time = await this.repository.time.create({
       data: {
         nome,

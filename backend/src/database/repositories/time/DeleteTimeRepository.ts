@@ -1,4 +1,3 @@
-import ITime from "../../../interfaces/ITime";
 import IDeleteTimeRepository from "../../../interfaces/time/IDeleteTimeRepository";
 import prismaClient from "../../prismaClient";
 
