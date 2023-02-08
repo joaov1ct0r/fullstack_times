@@ -1,6 +1,6 @@
-import ICreateTimeRepository from "../../interfaces/ICreateTimeRepository";
-import ITime from "../../interfaces/ITime";
-import prismaClient from "../prismaClient";
+import ICreateTimeRepository from "../../../interfaces/time/ICreateTimeRepository";
+import ITime from "../../../interfaces/ITime";
+import prismaClient from "../../prismaClient";
 
 export default class CreateTimeRepository implements ICreateTimeRepository {
   public readonly repository;

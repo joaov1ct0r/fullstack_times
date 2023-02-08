@@ -1,6 +1,6 @@
-import IEditTimeRepository from "../../interfaces/IEditTimeRepository";
-import ITime from "../../interfaces/ITime";
-import prismaClient from "../prismaClient";
+import IEditTimeRepository from "../../../interfaces/time/IEditTimeRepository";
+import ITime from "../../../interfaces/ITime";
+import prismaClient from "../../prismaClient";
 
 export default class EditTimeRepository implements IEditTimeRepository {
   public readonly repository;
