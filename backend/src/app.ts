@@ -7,6 +7,8 @@ export default class App {
 
   constructor() {
     this.server = express();
+    this.middlewares();
+    this.routes();
   }
 
   private async middlewares() {
@@ -26,7 +28,7 @@ export default class App {
   }
 
   private async routes() {
-    this.server.use("/test", (req, res) => {
+    this.server.get("/test", (req, res) => {
       return res.json({ hello: "world" });
     });
   }
