@@ -1,6 +1,8 @@
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import Internal from "./errors/Internal";
+import BadRequest from "./errors/BadRequest";
 
 export default class App {
   public server: express.Application;
@@ -25,6 +27,22 @@ export default class App {
     this.server.use(express.json());
 
     this.server.use(express.urlencoded({ extended: true }));
+
+    this.server.use(
+      (
+        error: BadRequest | Internal,
+        req: Request,
+        res: Response,
+        next: NextFunction
+      ) => {
+        if (error && error.statusCode) {
+          return res.status(error.statusCode).json({
+            message: error.message,
+            status: error.statusCode,
+          });
+        }
+      }
+    );
   }
 
   private async routes() {
