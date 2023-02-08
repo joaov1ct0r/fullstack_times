@@ -11,19 +11,8 @@ datasource db {
 }
 
 model Time {
-  id      Int       @id @default(autoincrement())
-  nome    String    @unique
-  Jogador Jogador[]
+  id   Int    @id @default(autoincrement())
+  nome String @unique
 
   @@map("time")
-}
-
-model Jogador {
-  id      Int    @id @default(autoincrement())
-  nome    String @unique
-  idade   Int
-  time    Time   @relation(fields: [time_id], references: [id])
-  time_id Int
-
-  @@map("jogador")
 }
