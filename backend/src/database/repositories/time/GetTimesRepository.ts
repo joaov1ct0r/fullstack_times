@@ -10,7 +10,11 @@ export default class GetTimesRepository implements IGetTimesRepository {
   }
 
   async execute() {
-    const times = await this.repository.time.findMany();
+    const times = await this.repository.time.findMany({
+      include: {
+        Jogador: true,
+      },
+    });
 
     return times;
   }
