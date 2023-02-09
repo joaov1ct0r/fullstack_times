@@ -10,7 +10,7 @@ export default class GetTimesRepository implements IGetTimesRepository {
     this.repository = prismaClient;
   }
 
-  async execute(): Promise<ITime[]> {
+  async execute() {
     const times = await this.repository.time.findMany();
 
     return times;
