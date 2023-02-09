@@ -3,12 +3,12 @@ import ICreateTimeRepository from "../../interfaces/time/ICreateTimeRepository";
 import IGetTimeRepository from "../../interfaces/time/IGetTimeRepository";
 
 export default class CreateTimeService {
-  public readonly createTimeRepository: ICreateTimeRepository;
   public readonly getTimeRepository: IGetTimeRepository;
+  public readonly createTimeRepository: ICreateTimeRepository;
 
   constructor(
-    createTimeRepository: ICreateTimeRepository,
-    getTimeRepository: IGetTimeRepository
+    getTimeRepository: IGetTimeRepository,
+    createTimeRepository: ICreateTimeRepository
   ) {
     this.getTimeRepository = getTimeRepository;
     this.createTimeRepository = createTimeRepository;
