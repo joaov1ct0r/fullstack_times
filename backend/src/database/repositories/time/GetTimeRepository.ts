@@ -13,6 +13,9 @@ export default class GetTimeRepository implements IGetTimeRepository {
       where: {
         nome,
       },
+      include: {
+        Jogador: true,
+      },
     });
 
     return time;
