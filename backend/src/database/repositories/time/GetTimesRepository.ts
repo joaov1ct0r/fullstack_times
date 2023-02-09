@@ -1,7 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import prismaClient from "../../prismaClient";
 import IGetTimesRepository from "../../../interfaces/time/IGetTimesRepository";
-import ITime from "../../../interfaces/ITime";
 
 export default class GetTimesRepository implements IGetTimesRepository {
   public readonly repository: PrismaClient;
