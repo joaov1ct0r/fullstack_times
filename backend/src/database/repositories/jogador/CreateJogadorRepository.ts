@@ -4,14 +4,8 @@ import prismaClient from "../../prismaClient";
 export default class CreateJogadorRepository
   implements ICreateJogadorRepository
 {
-  public readonly repository;
-
-  constructor() {
-    this.repository = prismaClient;
-  }
-
   async execute(nome: string, idade: number, time_id: number) {
-    const jogador = await this.repository.jogador.create({
+    const jogador = await prismaClient.jogador.create({
       data: {
         nome,
         idade,

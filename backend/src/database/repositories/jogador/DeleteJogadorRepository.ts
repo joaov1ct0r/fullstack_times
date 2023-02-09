@@ -4,14 +4,8 @@ import prismaClient from "../../prismaClient";
 export default class DeleteJogadorRepository
   implements IDeleteJogadorRepository
 {
-  public readonly repository;
-
-  constructor() {
-    this.repository = prismaClient;
-  }
-
   async execute(id: number) {
-    const jogador = await this.repository.jogador.delete({
+    const jogador = await prismaClient.jogador.delete({
       where: { id },
     });
 
