@@ -26,7 +26,7 @@ export default class EditJogadorService {
     );
 
     if (isJogadorRegistered) {
-      throw new BadRequest("Jogador já cadastrado!");
+      throw new BadRequest("Jogador não cadastrado!");
     }
 
     const isTimeRegistered = await this.getTimeRepository.execute(
@@ -34,12 +34,22 @@ export default class EditJogadorService {
       time_id
     );
 
-    const isJogadorTeamPlayer = isTimeRegistered!.Jogador!.find(
+    if (!isTimeRegistered) {
+      throw new BadRequest("Time não cadastrado!");
+    }
+
+    const isJogadorTeamPlayer = isTimeRegistered.Jogador!.find(
       (jogador: IJogador) => jogador.id === id
     );
 
     if (!isJogadorTeamPlayer) {
       throw new BadRequest("Jogador não cadastrado no time!");
+    }
+
+    const isNameInUse = await this.getJogadorRepository.execute(nome);
+
+    if (isNameInUse) {
+      throw new BadRequest("Nome já cadastrado!");
     }
 
     await this.editJogadorRepository.execute(id, nome, idade, time_id);

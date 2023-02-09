@@ -24,6 +24,12 @@ export default class EditTimeService {
       throw new BadRequest("Time não encontrado!");
     }
 
+    const isNomeInUse = await this.getTimeRepository.execute(nome);
+
+    if (isNomeInUse) {
+      throw new BadRequest("Nome já cadastrado!");
+    }
+
     await this.editTimeRepository.execute(id, nome);
   }
 }
