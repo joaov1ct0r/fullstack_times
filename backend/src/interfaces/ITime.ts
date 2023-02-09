@@ -1,3 +1,4 @@
+import { Time } from "@prisma/client";
 import IJogador from "./IJogador";
 
 export default interface ITime {

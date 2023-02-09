@@ -3,7 +3,7 @@ import prismaClient from "../../prismaClient";
 
 export default class GetTimeRepository implements IGetTimeRepository {
   async execute(nome: string) {
-    const time = await prismaClient.time.delete({
+    const time = await prismaClient.time.findFirst({
       where: {
         nome,
       },
