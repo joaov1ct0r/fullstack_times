@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import ValidateTime from "../validations/validateTime";
-import BadRequest from "../errors/BadRequest";
-import GetTimeRepository from "../database/repositories/time/GetTimeRepository";
-import EditTimeRepository from "../database/repositories/time/EditTimeRepository";
-import EditTimeService from "../services/time/EditTimeService";
+import ValidateTime from "../../validations/validateTime";
+import BadRequest from "../../errors/BadRequest";
+import GetTimeRepository from "../../database/repositories/time/GetTimeRepository";
+import EditTimeRepository from "../../database/repositories/time/EditTimeRepository";
+import EditTimeService from "../../services/time/EditTimeService";
 
 export default class EditTimeController {
   async handle(req: Request, res: Response) {
