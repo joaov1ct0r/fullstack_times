@@ -24,7 +24,7 @@ export default class ValidateJogador {
 
   validateDeleteJogador(data: object): Joi.ValidationResult {
     const schema: Joi.ObjectSchema<Object> = Joi.object({
-      time_id: Joi.string().required().min(1),
+      id: Joi.string().required().min(1),
     });
 
     return schema.validate(data);
