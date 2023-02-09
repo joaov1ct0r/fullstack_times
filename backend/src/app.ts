@@ -3,6 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import Internal from "./errors/Internal";
 import BadRequest from "./errors/BadRequest";
+import timeRouter from "./routes/time";
 
 export default class App {
   public server: express.Application;
@@ -46,8 +47,6 @@ export default class App {
   }
 
   private async routes() {
-    this.server.get("/test", (req, res) => {
-      return res.json({ hello: "world" });
-    });
+    this.server.use("/api/time", timeRouter);
   }
 }
