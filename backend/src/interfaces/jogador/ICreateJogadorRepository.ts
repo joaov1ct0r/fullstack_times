@@ -3,5 +3,5 @@ import IJogador from "../IJogador";
 
 export default interface ICreateJogadorRepository {
   repository: PrismaClient;
-  execute(nome: string, idade: number): Promise<IJogador>;
+  execute(nome: string, idade: number, time_id: number): Promise<IJogador>;
 }
