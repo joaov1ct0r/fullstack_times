@@ -1,29 +1,29 @@
 import BadRequest from "../../errors/BadRequest";
-import IEditTimeRepository from "../../interfaces/time/IEditTimeRepository";
+import IDeleteTimeRepository from "../../interfaces/time/IDeleteTimeRepository";
 import IGetTimeRepository from "../../interfaces/time/IGetTimeRepository";
 
-export default class EditTimeService {
+export default class DeleteTimeService {
   private readonly getTimeRepository: IGetTimeRepository;
-  private readonly editTimeRepository: IEditTimeRepository;
+  private readonly deleteTimeRepository: IDeleteTimeRepository;
 
   constructor(
     getTimeRepository: IGetTimeRepository,
-    editTimeRepository: IEditTimeRepository
+    deleteTimeRepository: IDeleteTimeRepository
   ) {
     this.getTimeRepository = getTimeRepository;
-    this.editTimeRepository = editTimeRepository;
+    this.deleteTimeRepository = deleteTimeRepository;
   }
 
-  async execute(id: number, nome: string) {
+  async execute(id: number) {
     const isTimeRegistered = await this.getTimeRepository.execute(
       undefined,
       id
     );
 
     if (!isTimeRegistered) {
-      throw new BadRequest("Time não encontrado!");
+      throw new BadRequest("Time não encontado!");
     }
 
-    await this.editTimeRepository.execute(id, nome);
+    await this.deleteTimeRepository.execute(id);
   }
 }
