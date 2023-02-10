@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import ValidateTime from "../../validations/validateTime";
-import BadRequest from "../../errors/BadRequest";
-import GetTimeRepository from "../../database/repositories/time/GetTimeRepository";
-import DeleteTimeRepository from "../../database/repositories/time/DeleteTimeRepository";
-import DeleteTimeService from "../../services/time/DeleteTimeService";
+import ValidateTime from "../validations/validateTime";
+import BadRequest from "../errors/BadRequest";
+import GetTimeRepository from "../database/repositories/GetTimeRepository";
+import DeleteTimeRepository from "../database/repositories/DeleteTimeRepository";
+import DeleteTimeService from "../services/DeleteTimeService";
 
 export default class DeleteTimeController {
   async handle(req: Request, res: Response) {

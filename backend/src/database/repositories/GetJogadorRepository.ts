@@ -1,6 +1,6 @@
-import IJogador from "../../../interfaces/IJogador";
-import IGetJogadorRepository from "../../../interfaces/jogador/IGetJogadorRepository";
-import prismaClient from "../../prismaClient";
+import IJogador from "../../interfaces/IJogador";
+import IGetJogadorRepository from "../../interfaces/IGetJogadorRepository";
+import prismaClient from "../prismaClient";
 
 export default class GetJogadorRepository implements IGetJogadorRepository {
   execute(

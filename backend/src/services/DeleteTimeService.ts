@@ -1,6 +1,6 @@
-import BadRequest from "../../errors/BadRequest";
-import IDeleteTimeRepository from "../../interfaces/time/IDeleteTimeRepository";
-import IGetTimeRepository from "../../interfaces/time/IGetTimeRepository";
+import BadRequest from "../errors/BadRequest";
+import IDeleteTimeRepository from "../interfaces/IDeleteTimeRepository";
+import IGetTimeRepository from "../interfaces/IGetTimeRepository";
 
 export default class DeleteTimeService {
   private readonly getTimeRepository: IGetTimeRepository;

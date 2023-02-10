@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import ValidateJogador from "../../validations/validateJogador";
-import BadRequest from "../../errors/BadRequest";
-import GetJogadorRepository from "../../database/repositories/jogador/GetJogadorRepository";
-import GetTimeRepository from "../../database/repositories/time/GetTimeRepository";
-import EditJogadorRepository from "../../database/repositories/jogador/EditJogadorRepository";
-import EditJogadorService from "../../services/jogador/EditJogadorService";
+import ValidateJogador from "../validations/validateJogador";
+import BadRequest from "../errors/BadRequest";
+import GetJogadorRepository from "../database/repositories/GetJogadorRepository";
+import GetTimeRepository from "../database/repositories/GetTimeRepository";
+import EditJogadorRepository from "../database/repositories/EditJogadorRepository";
+import EditJogadorService from "../services/EditJogadorService";
 
 export default class EditJogadorController {
   async handle(req: Request, res: Response) {

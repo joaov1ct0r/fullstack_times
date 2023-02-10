@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import GetTimesRepository from "../../database/repositories/time/GetTimesRepository";
-import GetTimesService from "../../services/time/GetTimesService";
+import GetTimesRepository from "../database/repositories/GetTimesRepository";
+import GetTimesService from "../services/GetTimesService";
 
 export default class GetTimesController {
   async handle(req: Request, res: Response) {

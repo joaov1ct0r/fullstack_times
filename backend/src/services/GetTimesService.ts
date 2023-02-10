@@ -1,4 +1,4 @@
-import IGetTimesRepository from "../../interfaces/time/IGetTimesRepository";
+import IGetTimesRepository from "../interfaces/IGetTimesRepository";
 
 export default class GetTimesService {
   private readonly getTimesRepository: IGetTimesRepository;

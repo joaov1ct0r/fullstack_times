@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import ValidateJogador from "../validations/validateJogador";
 import BadRequest from "../errors/BadRequest";
-import GetJogadorRepository from "../database/repositories/jogador/GetJogadorRepository";
-import GetTimeRepository from "../database/repositories/time/GetTimeRepository";
+import GetJogadorRepository from "../database/repositories/GetJogadorRepository";
+import GetTimeRepository from "../database/repositories/GetTimeRepository";
 import CreateJogadorRepository from "../database/repositories/CreateJogadorRepository";
 import CreateJogadorService from "../services/CreateJogadorService";
 

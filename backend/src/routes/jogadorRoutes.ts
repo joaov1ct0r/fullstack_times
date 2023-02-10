@@ -1,8 +1,8 @@
 import express from "express";
 import CreateJogadorController from "../controllers/CreateJogadorController";
 import Resolver from "../utils/Resolver";
-import EditJogadorController from "../controllers/jogador/EditJogadorController";
-import DeleteJogadorController from "../controllers/jogador/DeleteJogadorController";
+import EditJogadorController from "../controllers/EditJogadorController";
+import DeleteJogadorController from "../controllers/DeleteJogadorController";
 
 const jogadorRouter = express.Router();
 const resolver = new Resolver();

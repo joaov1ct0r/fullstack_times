@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import IJogador from "../IJogador";
+import IJogador from "./IJogador";
 
 export default interface IEditJogadorRepository {
   execute(

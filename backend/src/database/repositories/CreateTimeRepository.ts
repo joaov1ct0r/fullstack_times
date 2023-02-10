@@ -1,5 +1,5 @@
-import ICreateTimeRepository from "../../../interfaces/time/ICreateTimeRepository";
-import prismaClient from "../../prismaClient";
+import ICreateTimeRepository from "../../interfaces/ICreateTimeRepository";
+import prismaClient from "../prismaClient";
 
 export default class CreateTimeRepository implements ICreateTimeRepository {
   async execute(nome: string) {

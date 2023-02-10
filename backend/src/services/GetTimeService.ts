@@ -1,5 +1,5 @@
-import BadRequest from "../../errors/BadRequest";
-import IGetTimeRepository from "../../interfaces/time/IGetTimeRepository";
+import BadRequest from "../errors/BadRequest";
+import IGetTimeRepository from "../interfaces/IGetTimeRepository";
 
 export default class GetTimeService {
   private readonly getTimeRepository: IGetTimeRepository;

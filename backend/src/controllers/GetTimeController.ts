@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import ValidateTime from "../../validations/validateTime";
-import BadRequest from "../../errors/BadRequest";
-import GetTimeRepository from "../../database/repositories/time/GetTimeRepository";
-import GetTimeService from "../../services/time/GetTimeService";
+import ValidateTime from "../validations/validateTime";
+import BadRequest from "../errors/BadRequest";
+import GetTimeRepository from "../database/repositories/GetTimeRepository";
+import GetTimeService from "../services/GetTimeService";
 
 export default class GetTimeController {
   async handle(req: Request, res: Response) {

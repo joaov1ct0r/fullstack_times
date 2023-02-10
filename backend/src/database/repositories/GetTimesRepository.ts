@@ -1,5 +1,5 @@
-import prismaClient from "../../prismaClient";
-import IGetTimesRepository from "../../../interfaces/time/IGetTimesRepository";
+import prismaClient from "../prismaClient";
+import IGetTimesRepository from "../../interfaces/IGetTimesRepository";
 
 export default class GetTimesRepository implements IGetTimesRepository {
   async execute() {

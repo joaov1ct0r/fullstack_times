@@ -1,5 +1,5 @@
-import IEditTimeRepository from "../../../interfaces/time/IEditTimeRepository";
-import prismaClient from "../../prismaClient";
+import IEditTimeRepository from "../../interfaces/IEditTimeRepository";
+import prismaClient from "../prismaClient";
 
 export default class EditTimeRepository implements IEditTimeRepository {
   async execute(id: number, nome: string) {

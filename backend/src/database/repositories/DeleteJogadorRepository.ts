@@ -1,5 +1,5 @@
-import IDeleteJogadorRepository from "../../../interfaces/jogador/IDeleteJogadorRepository";
-import prismaClient from "../../prismaClient";
+import IDeleteJogadorRepository from "../../interfaces/IDeleteJogadorRepository";
+import prismaClient from "../prismaClient";
 
 export default class DeleteJogadorRepository
   implements IDeleteJogadorRepository

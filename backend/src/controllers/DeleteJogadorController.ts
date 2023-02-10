@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import ValidateJogador from "../../validations/validateJogador";
-import BadRequest from "../../errors/BadRequest";
-import GetJogadorRepository from "../../database/repositories/jogador/GetJogadorRepository";
-import DeleteJogadorRepository from "../../database/repositories/jogador/DeleteJogadorRepository";
-import DeleteJogadorService from "../../services/jogador/DeleteJogadorService";
+import ValidateJogador from "../validations/validateJogador";
+import BadRequest from "../errors/BadRequest";
+import GetJogadorRepository from "../database/repositories/GetJogadorRepository";
+import DeleteJogadorRepository from "../database/repositories/DeleteJogadorRepository";
+import DeleteJogadorService from "../services/DeleteJogadorService";
 
 export default class DeleteJogadorController {
   async handle(req: Request, res: Response) {

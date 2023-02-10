@@ -1,5 +1,5 @@
-import IDeleteTimeRepository from "../../../interfaces/time/IDeleteTimeRepository";
-import prismaClient from "../../prismaClient";
+import IDeleteTimeRepository from "../../interfaces/IDeleteTimeRepository";
+import prismaClient from "../prismaClient";
 
 export default class DeleteTimeRepository implements IDeleteTimeRepository {
   async execute(id: number) {

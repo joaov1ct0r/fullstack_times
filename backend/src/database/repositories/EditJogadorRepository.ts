@@ -1,5 +1,5 @@
-import IEditJogadorRepository from "../../../interfaces/jogador/IEditJogadorRepository";
-import prismaClient from "../../prismaClient";
+import IEditJogadorRepository from "../../interfaces/IEditJogadorRepository";
+import prismaClient from "../prismaClient";
 
 export default class EditJogadorRepository implements IEditJogadorRepository {
   async execute(id: number, nome: string, idade: number, time_id: number) {
