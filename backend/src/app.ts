@@ -20,7 +20,7 @@ export default class App {
       cors({
         origin: "*",
         credentials: true,
-        methods: ["GET", "POST"],
+        methods: ["GET", "POST", "PUT", "DELETE"],
       })
     );
 
