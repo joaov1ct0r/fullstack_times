@@ -3,8 +3,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import Internal from "./errors/Internal";
 import BadRequest from "./errors/BadRequest";
-import timeRouter from "./routes/time";
-import jogadorRouter from "./routes/jogador";
+import timeRouter from "./routes/timeRoutes";
+import jogadorRouter from "./routes/jogadorRoutes";
 
 export default class App {
   public server: express.Application;
