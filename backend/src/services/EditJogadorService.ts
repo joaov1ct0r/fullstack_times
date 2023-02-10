@@ -1,8 +1,8 @@
-import BadRequest from "../../errors/BadRequest";
-import IJogador from "../../interfaces/IJogador";
-import IEditJogadorRepository from "../../interfaces/jogador/IEditJogadorRepository";
-import IGetJogadorRepository from "../../interfaces/jogador/IGetJogadorRepository";
-import IGetTimeRepository from "../../interfaces/time/IGetTimeRepository";
+import BadRequest from "../errors/BadRequest";
+import IJogador from "../interfaces/IJogador";
+import IEditJogadorRepository from "../interfaces/IEditJogadorRepository";
+import IGetJogadorRepository from "../interfaces/IGetJogadorRepository";
+import IGetTimeRepository from "../interfaces/IGetTimeRepository";
 
 export default class EditJogadorService {
   private readonly getJogadorRepository: IGetJogadorRepository;

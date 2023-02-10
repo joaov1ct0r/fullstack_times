@@ -1,4 +1,4 @@
-import ICreateJogadorRepository from "../../../interfaces/jogador/ICreateJogadorRepository";
+import ICreateJogadorRepository from "../../../interfaces/ICreateJogadorRepository";
 import prismaClient from "../../prismaClient";
 
 export default class CreateJogadorRepository

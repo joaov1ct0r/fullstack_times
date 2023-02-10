@@ -1,6 +1,6 @@
-import BadRequest from "../../errors/BadRequest";
-import ICreateTimeRepository from "../../interfaces/time/ICreateTimeRepository";
-import IGetTimeRepository from "../../interfaces/time/IGetTimeRepository";
+import BadRequest from "../errors/BadRequest";
+import ICreateTimeRepository from "../interfaces/ICreateTimeRepository";
+import IGetTimeRepository from "../interfaces/IGetTimeRepository";
 
 export default class CreateTimeService {
   private readonly getTimeRepository: IGetTimeRepository;

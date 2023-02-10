@@ -1,5 +1,5 @@
 import express from "express";
-import CreateJogadorController from "../controllers/jogador/CreateJogadorController";
+import CreateJogadorController from "../controllers/CreateJogadorController";
 import Resolver from "../utils/Resolver";
 import EditJogadorController from "../controllers/jogador/EditJogadorController";
 import DeleteJogadorController from "../controllers/jogador/DeleteJogadorController";

@@ -1,6 +1,6 @@
-import BadRequest from "../../errors/BadRequest";
-import IDeleteJogadorRepository from "../../interfaces/jogador/IDeleteJogadorRepository";
-import IGetJogadorRepository from "../../interfaces/jogador/IGetJogadorRepository";
+import BadRequest from "../errors/BadRequest";
+import IDeleteJogadorRepository from "../interfaces/IDeleteJogadorRepository";
+import IGetJogadorRepository from "../interfaces/IGetJogadorRepository";
 
 export default class DeleteJogadorService {
   private readonly getJogadorRepository: IGetJogadorRepository;

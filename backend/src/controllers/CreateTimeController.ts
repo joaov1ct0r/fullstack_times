@@ -3,7 +3,7 @@ import ValidateTime from "../../validations/validateTime";
 import BadRequest from "../../errors/BadRequest";
 import GetTimeRepository from "../../database/repositories/time/GetTimeRepository";
 import CreateTimeRepository from "../../database/repositories/time/CreateTimeRepository";
-import CreateTimeService from "../../services/time/CreateTimeService";
+import CreateTimeService from "../../services/CreateTimeService";
 
 export default class CreateTimeController {
   async handle(req: Request, res: Response) {
