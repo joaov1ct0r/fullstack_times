@@ -16,24 +16,24 @@ services:
     ports:
       - ${DB_PORT}:5432
 
-  # api_times_dev:
-  #   container_name: api_times_dev
-  #   build:
-  #     args:
-  #       - NODE_ENV=development
-  #     context: .
-  #     dockerfile: Dockerfile
-  #     target: development
-  #   image: api_times_dev
-  #   entrypoint: ["/bin/sh", "./src/scripts/entrypoint_dev.sh"]
-  #   volumes:
-  #     - .:/usr/src/app
-  #   env_file:
-  #     - .env
-  #   environment:
-  #     - NODE_ENV=development
-  #   restart: always
-  #   # depends_on:
-  #   #   - db
-  #   ports:
-  #     - ${SERVER_PORT}:${SERVER_PORT}
+  api_times_dev:
+    container_name: api_times_dev
+    build:
+      args:
+        - NODE_ENV=development
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    image: api_times_dev
+    entrypoint: ["/bin/sh", "./src/scripts/entrypoint_dev.sh"]
+    volumes:
+      - .:/usr/src/app
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
