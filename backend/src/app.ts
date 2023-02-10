@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import Internal from "./errors/Internal";
 import BadRequest from "./errors/BadRequest";
 import timeRouter from "./routes/time";
+import jogadorRouter from "./routes/jogador";
 
 export default class App {
   public server: express.Application;
@@ -48,5 +49,6 @@ export default class App {
 
   private async routes() {
     this.server.use("/api/time", timeRouter);
+    this.server.use("/api/jogador", jogadorRouter);
   }
 }
