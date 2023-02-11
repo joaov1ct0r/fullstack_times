@@ -1,0 +1,39 @@
+version: '3.4'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_DATABASE}
+      - DATABASE_URL=${DATABASE_URL}`
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend/postgresDataDev:/var/lib/postgresql/data
+    ports:
+      - ${DB_PORT}:5432
+
+  api_times_dev:
+    container_name: api_times_dev
+    build:
+      args:
+        - NODE_ENV=development
+      context: ./backend
+      dockerfile: Dockerfile
+      target: development
+    image: api_times_dev
+    entrypoint: ["/bin/sh", "./backend/src/scripts/entrypoint_dev.sh"]
+    volumes:
+      - ./backend:/usr/src/app
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=development
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
