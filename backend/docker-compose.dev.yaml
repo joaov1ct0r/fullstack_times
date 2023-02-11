@@ -36,4 +36,4 @@ services:
     depends_on:
       - db
     ports:
-      - ${SERVER_PORT}:${SERVER_PORT}
+      - 3000:3000

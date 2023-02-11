@@ -3,8 +3,6 @@ FROM node:14 as development
 
 WORKDIR /usr/src/app
 
-EXPOSE 3000
-
 COPY package*.json ./
 
 RUN npm cache clean --force && npm cache verify
