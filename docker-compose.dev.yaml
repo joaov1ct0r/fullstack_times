@@ -4,13 +4,13 @@ services:
   db:
     image: postgres
     restart: always
+    env_file:
+      - .env
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_DATABASE}
       - DATABASE_URL=${DATABASE_URL}`
-    env_file:
-      - ./backend/.env
     volumes:
       - ./backend/postgresDataDev:/var/lib/postgresql/data
     ports:
@@ -29,9 +29,11 @@ services:
     volumes:
       - ./backend:/usr/src/app
     env_file:
-      - ./backend/.env
+      - .env
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=${NODE_ENV}
+      - SERVER_PORT=${SERVER_PORT}
+      - SERVER_HOST=${SERVER_HOST}
     restart: always
     depends_on:
       - db

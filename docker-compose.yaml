@@ -8,9 +8,9 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_DATABASE}
-      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_URL=${DATABASE_URL}`
     env_file:
-      - ./backend/.env
+      - .env
     volumes:
       - ./backend/postgresData:/var/lib/postgresql/data
     ports:
@@ -29,7 +29,9 @@ services:
     env_file:
       - .env
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=${NODE_ENV}
+      - SERVER_PORT=${SERVER_PORT}
+      - SERVER_HOST=${SERVER_HOST}
     restart: always
     depends_on:
       - db
