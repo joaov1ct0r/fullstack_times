@@ -2,10 +2,12 @@ import React from "react";
 import { FiTrash, FiEdit } from "react-icons/fi";
 import useDeleteTime from "../hooks/useDeleteTime";
 import useGetTimes from "../hooks/useGetTimes";
+import useTime from "../hooks/useTime";
 import ITime from "../interfaces/ITime";
 
 export default function List() {
   const times = useGetTimes();
+  const { setTime } = useTime();
 
   return (
     <table className="table bg-white w-75 mt-3 border border-dark">
@@ -33,7 +35,7 @@ export default function List() {
             <td>{time.jogador.length}</td>
             <td>
               <button className="border border-white bg-warning text-white" type="button" data-bs-toggle="modal"
-                data-bs-target="#editTimeModal">
+                data-bs-target="#editTimeModal" onClick={() => setTime(time)}>
                 <FiEdit size={20}></FiEdit>
               </button>
               <button

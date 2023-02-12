@@ -1,10 +1,11 @@
 import useEditTime from "../hooks/useEditTime";
 import useFormEditTime from "../hooks/useFormEditTime";
-import ICreateTime from "../interfaces/ICreateTime";
+import useTime from "../hooks/useTime";
 import IEditTimeForm from "../interfaces/IEditTimeForm";
 
-export default function EditTimeModal() {
+export default function EditTimeModal(id: string) {
   const { handleSubmit, register, reset } = useFormEditTime();
+  const { time } = useTime();
 
   return (
     <div
@@ -49,11 +50,12 @@ export default function EditTimeModal() {
                     value: /[0-9]{1,9}$/,
                     message: "ID Invalido",
                   },
+                  value: String(time!.id),
                 })}
                 type="number"
-                placeholder="ID:"
+                placeholder={String(time!.id)}
                 className="form-control"
-                required
+                disabled
               ></input>
             </div>
             <span className="input-group-text mb-3" id="basic-addon2">

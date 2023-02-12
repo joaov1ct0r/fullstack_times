@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
-import ICreateTime from "../interfaces/ICreateTime";
 import IEditTimeForm from "../interfaces/IEditTimeForm";
+import useTime from "./useTime";
 
 export default function useFormEditTime() {
+  const { time } = useTime();
   const {
     register,
     handleSubmit,
@@ -11,7 +12,7 @@ export default function useFormEditTime() {
   } = useForm<IEditTimeForm>({
     defaultValues: {
     nome: "",
-    id: "",
+    id: String(time!.id),
     },
   });
 
