@@ -18,6 +18,8 @@ RUN npm i -g npm@latest
 # Stage 2 Production
 FROM nginx as production
 
+EXPOSE 5173
+
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=development /usr/src/app/package*.json ./
