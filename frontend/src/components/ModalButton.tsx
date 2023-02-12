@@ -10,7 +10,7 @@ export default function ModalButton(): JSX.Element {
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <FiPlusCircle size={50} color="#0000FF"></FiPlusCircle>
+        <FiPlusCircle size={75} color="#000"></FiPlusCircle>
       </button>
     </div>
   );
