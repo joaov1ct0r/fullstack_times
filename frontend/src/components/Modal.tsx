@@ -38,7 +38,7 @@ export default function Modal(): JSX.Element {
             })}
           >
             <span className="input-group-text mb-3" id="basic-addon2">
-              Use o sinal de - para criar nova saida.
+              Escolha o nome do seu time:
             </span>
             <div className="input-group mb-3">
               <input
