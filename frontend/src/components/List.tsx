@@ -31,7 +31,8 @@ export default function List() {
             <td>{time.nome}</td>
             <td>{time.jogador.length}</td>
             <td>
-              <button className="border border-white bg-warning text-white">
+              <button className="border border-white bg-warning text-white" type="button" data-bs-toggle="modal"
+                data-bs-target="#editTimeModal">
                 <FiEdit size={20}></FiEdit>
               </button>
               <button

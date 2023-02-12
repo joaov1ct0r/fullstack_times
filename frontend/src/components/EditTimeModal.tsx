@@ -8,7 +8,7 @@ export default function EditTimeModal() {
   return (
     <div
       className="modal fade"
-      id="exampleModal"
+      id="editTimeModal"
       tabIndex={-1}
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
