@@ -10,12 +10,12 @@ export default function Header(): JSX.Element {
           <ul className="navbar-nav mb-2">
             <li className="nav-item" key={"home"}>
               <Link to={"/"} className="nav-link text-white">
-                Home
+                Times
               </Link>
             </li>
             <li className="nav-item" key={"search"}>
-              <Link to={"/search"} className="nav-link text-white">
-                Search
+              <Link to={"/time"} className="nav-link text-white">
+                Time
               </Link>
             </li>
           </ul>
