@@ -40,3 +40,20 @@ services:
             - db
         ports:
             - ${SERVER_PORT}:${SERVER_PORT}
+
+    react_times_prod:
+    container_name: react-times_prod
+    build:
+      args:
+        - NODE_ENV=${NODE_ENV}
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: production
+    image: react_times_dev
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=${NODE_ENV}
+    restart: always
+    ports:
+      - 5173:5173
