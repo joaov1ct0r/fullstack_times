@@ -1,9 +1,10 @@
 import useEditTime from "../hooks/useEditTime";
-import useFormTime from "../hooks/useFormTime";
+import useFormEditTime from "../hooks/useFormEditTime";
 import ICreateTime from "../interfaces/ICreateTime";
+import IEditTimeForm from "../interfaces/IEditTimeForm";
 
 export default function EditTimeModal() {
-  const { handleSubmit, register, reset } = useFormTime();
+  const { handleSubmit, register, reset } = useFormEditTime();
 
   return (
     <div
@@ -28,7 +29,7 @@ export default function EditTimeModal() {
           </div>
           <form
             className="modal-body"
-            onSubmit={handleSubmit((data: ICreateTime) => {
+            onSubmit={handleSubmit((data: IEditTimeForm) => {
               const response = useEditTime(data);
 
               alert(response);
@@ -36,6 +37,25 @@ export default function EditTimeModal() {
               reset();
             })}
           >
+
+            <div className="input-group mb-3">
+              <input
+                {...register("id", {
+                  required: {
+                    value: true,
+                    message: "ID é obrigatorio",
+                  },
+                  pattern: {
+                    value: /[0-9]{1,9}$/,
+                    message: "ID Invalido",
+                  },
+                })}
+                type="number"
+                placeholder="ID:"
+                className="form-control"
+                required
+              ></input>
+            </div>
             <span className="input-group-text mb-3" id="basic-addon2">
               Escolha o nome do seu time:
             </span>
