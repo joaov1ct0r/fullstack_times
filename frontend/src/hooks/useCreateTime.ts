@@ -12,11 +12,9 @@ export default function useCreateTime(data: ICreateTime) {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    for (let i = 0; i <= 5; i++) {
-      request.post<ICreateTimeReq>("/api/time/create", {
-        nome: data.nome
-      }).then((response) => setMessage(response.data.message))
-    }
+    request.post<ICreateTimeReq>("/api/time/create", {
+      nome: data.nome
+    }).then((response) => setMessage(response.data.message))
   }, [])
 
   return message;
