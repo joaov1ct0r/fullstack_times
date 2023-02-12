@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import request from "../api/config";
 import ITime from "../interfaces/ITime";
 
-export default async function useGetTimes() {
-  const [times, setTimes] = useState<null | ITime[]>(null);
+interface IGetTimesReq {
+  message: string,
+  times: ITime[]
+}
 
-  const response = await request.get<ITime[]>("/api/time/times");
+export default function useGetTimes() {
+  const [times, setTimes] = useState<ITime[]>();
 
-  setTimes(response.data);
+  useEffect(() => {
+    request.get<IGetTimesReq>("/api/time/times").then((response) => setTimes(response.data.times))
+  }, [])
   
   return times;
 }
