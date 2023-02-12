@@ -10,7 +10,7 @@ export default function useEditTime(data: ICreateTime) {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    request.post<IEditTimeReq>("/api/time/edit", {
+    request.put<IEditTimeReq>("/api/time/edit", {
       nome: data.nome
     }).then((response) => setMessage(response.data.message))
   }, [])

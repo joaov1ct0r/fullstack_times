@@ -1,5 +1,6 @@
 import React from "react";
 import { FiTrash, FiEdit } from "react-icons/fi";
+import useDeleteTime from "../hooks/useDeleteTime";
 import useGetTimes from "../hooks/useGetTimes";
 import ITime from "../interfaces/ITime";
 
@@ -37,6 +38,9 @@ export default function List() {
               </button>
               <button
                 className="border border-white bg-danger text-white"
+                onClick={(e) => {
+                  useDeleteTime(e.currentTarget.parentElement!.parentElement!.id)
+                }}
               >
                 <FiTrash size={20}></FiTrash>
               </button>
