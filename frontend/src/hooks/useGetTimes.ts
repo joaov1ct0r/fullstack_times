@@ -8,7 +8,7 @@ interface IGetTimesReq {
 }
 
 export default function useGetTimes() {
-  const [times, setTimes] = useState<ITime[]>();
+  const [times, setTimes] = useState<ITime[] | null>(null);
 
   useEffect(() => {
     request.get<IGetTimesReq>("/api/time/times").then((response) => setTimes(response.data.times))

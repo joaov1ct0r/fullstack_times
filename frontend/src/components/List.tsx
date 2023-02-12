@@ -18,7 +18,7 @@ export default function List() {
       </thead>
 
       <tbody>
-        {times!.map((time: ITime) => {
+        {times?.map((time: ITime) => {
 
           return (<tr
             className="text-center text-danger"
