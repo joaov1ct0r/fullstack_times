@@ -5,6 +5,8 @@ import Internal from "./errors/Internal";
 import BadRequest from "./errors/BadRequest";
 import timeRouter from "./routes/timeRoutes";
 import jogadorRouter from "./routes/jogadorRoutes";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocs from "./swagger.json";
 
 export default class App {
   public server: express.Application;
@@ -13,6 +15,7 @@ export default class App {
     this.server = express();
     this.middlewares();
     this.routes();
+    this.docsRoutes();
   }
 
   private async middlewares() {
@@ -50,5 +53,9 @@ export default class App {
   private async routes() {
     this.server.use("/api/time", timeRouter);
     this.server.use("/api/jogador", jogadorRouter);
+  }
+
+  private docsRoutes() {
+    this.server.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
   }
 }
