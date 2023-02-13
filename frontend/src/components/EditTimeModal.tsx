@@ -3,7 +3,7 @@ import useFormEditTime from "../hooks/useFormEditTime";
 import useTime from "../hooks/useTime";
 import IEditTimeForm from "../interfaces/IEditTimeForm";
 
-export default function EditTimeModal(id: string) {
+export default function EditTimeModal() {
   const { handleSubmit, register, reset } = useFormEditTime();
   const { time } = useTime();
 
