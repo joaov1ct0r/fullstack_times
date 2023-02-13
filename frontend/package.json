@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "rimraf ./dist && tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -15,7 +15,8 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.1",
     "react-icons": "^4.7.1",
-    "react-router-dom": "^6.8.1"
+    "react-router-dom": "^6.8.1",
+    "rimraf": "^4.1.2"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
