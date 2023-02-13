@@ -22,7 +22,7 @@ export default function ListTime() {
       </thead>
 
       <tbody>
-        {time?.jogador.map((jogador: IJogador) => {
+        {time?.jogador?.map((jogador: IJogador) => {
 
           return (<tr
             className="text-center text-danger"

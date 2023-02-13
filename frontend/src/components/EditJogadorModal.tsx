@@ -50,10 +50,10 @@ export default function EditJogadorModal() {
                     value: /[0-9]{1,9}$/,
                     message: "ID Invalido",
                   },
-                  value: String(jogador!.id),
+                  value: String(jogador?.id),
                 })}
                 type="number"
-                placeholder={String(jogador!.id)}
+                placeholder={String(jogador?.id)}
                 className="form-control"
                 disabled
               ></input>
@@ -70,10 +70,10 @@ export default function EditJogadorModal() {
                     value: /[0-9]{1,9}$/,
                     message: "Time ID Invalido",
                   },
-                  value: String(jogador!.time_id),
+                  value: String(jogador?.time_id),
                 })}
                 type="number"
-                placeholder={String(jogador!.time_id)}
+                placeholder={String(jogador?.time_id)}
                 className="form-control"
                 disabled
               ></input>

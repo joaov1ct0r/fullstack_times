@@ -13,8 +13,8 @@ export default function useFormEditJogador() {
     defaultValues: {
     nome: "",
     idade: "",
-    time_id: String(jogador!.time_id),
-    id: String(jogador!.id),
+    time_id: String(jogador?.time_id),
+    id: String(jogador?.id),
     },
   });
 
