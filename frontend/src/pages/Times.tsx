@@ -1,3 +1,4 @@
+import CreateJogadorModal from "../components/CreateJogadorModal";
 import Header from "../components/Header";
 import List from "../components/List";
 import Modal from "../components/Modal";
@@ -12,6 +13,7 @@ export default function Times(): JSX.Element {
       </div>
       <ModalButton />
       <Modal />
+      <CreateJogadorModal />
     </div>
   )
 }
