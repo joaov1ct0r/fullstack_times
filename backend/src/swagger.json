@@ -9,33 +9,15 @@
     "version": "1.0.0"
   },
   "paths": {
-    "/api/time/create": {
-      "post": {
-        "summary": "Cadastro de usuarios",
-        "description": "Rota para cadastro de novos usuarios",
-        "tags": ["User"],
+    "/api/jogador/delete": {
+      "delete": {
+        "summary": "Excluir jogador",
+        "description": "Rota para excluir jogador",
+        "tags": ["jogador"],
         "parameters": [
           {
-            "email": "user@mail.com",
-            "description": "Email do usuario a cadastrado",
-            "in": "body",
-            "required": true
-          },
-          {
-            "name": "User da Silva",
-            "description": "Nome do usuario a ser cadastrado",
-            "in": "body",
-            "required": true
-          },
-          {
-            "nascimento": "28/06/2022",
-            "description": "Data de nascimento do usuario a ser cadastrado",
-            "in": "body",
-            "required": true
-          },
-          {
-            "senha": "senha1234",
-            "description": "Senha do usuario a ser cadastrado",
+            "id": "1",
+            "description": "ID do jogador a ser excluido",
             "in": "body",
             "required": true
           }
@@ -44,15 +26,12 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#components/schemas/User"
+                "$ref": "#components/schemas/jogador"
               },
               "examples": {
-                "user": {
+                "post": {
                   "value": {
-                    "email": "user@mail.com",
-                    "name": "user sobrenome",
-                    "bornAt": "28/06/2022",
-                    "password": "senha1234"
+                    "id": "1"
                   }
                 }
               }
@@ -61,29 +40,355 @@
         }
       },
       "responses": {
+        "500": {
+          "description": "Internal Server Error"
+        },
         "400": {
           "description": "Bad Request"
         },
-        "301": {
-          "description": "Moved Permanently"
+        "204": {
+          "description": "Not Found"
         }
       }
     },
-    "components": {
+    "/api/jogador/create": {
+      "post": {
+        "summary": "Criar jogador",
+        "description": "Rota para criar jogador",
+        "tags": ["jogador"],
+        "parameters": [
+          {
+            "idade": "18",
+            "description": "Idade do jogador a ser adicionado o comentario",
+            "in": "body",
+            "required": true
+          },
+          {
+            "nome": "novo nome",
+            "description": "nome do jogador a ser criado",
+            "in": "body",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/jogador"
+              },
+              "examples": {
+                "jogador": {
+                  "value": {
+                    "idade": "18",
+                    "nome": "novo nome"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "500": {
+          "description": "Internal Server Error"
+        },
+        "400": {
+          "description": "Bad Request"
+        },
+        "201": {
+          "description": "Created"
+        }
+      }
+    },
+    "/api/jogador/edit": {
+      "put": {
+        "summary": "Edição de jogador",
+        "description": "Rota para editar jogador",
+        "tags": ["jogador"],
+        "parameters": [
+          {
+            "id": "1",
+            "description": "ID do jogador a ser editado",
+            "in": "body",
+            "required": true
+          },
+          {
+            "time_id": "2",
+            "description": "ID do time do jogador a ser editado",
+            "in": "body",
+            "required": true
+          },
+          {
+            "nome": "novo nome",
+            "description": "Novo nome do jogador a ser alterado",
+            "in": "body",
+            "required": true
+          },
+          {
+            "idade": "18",
+            "description": "Nova idade do jogador a ser alterado",
+            "in": "body",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/jogador"
+              },
+              "examples": {
+                "jogador": {
+                  "value": {
+                    "time_id": "1",
+                    "id": "2",
+                    "nome": "novo nome",
+                    "idade": "18"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "500": {
+          "description": "Internal Server Error"
+        },
+        "400": {
+          "description": "Bad Request"
+        },
+        "204": {
+          "description": "No Content"
+        }
+      }
+    },
+    "/api/time/create": {
+      "delete": {
+        "summary": "Criação de novo time",
+        "description": "Rota para criar novo time",
+        "tags": ["time"],
+        "parameters": [
+          {
+            "nome": "time nome",
+            "description": "Nome do time ser criado",
+            "in": "body",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/time"
+              },
+              "examples": {
+                "time": {
+                  "value": {
+                    "nome": "time nome"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "500": {
+          "description": "Internal Server Error"
+        },
+        "400": {
+          "description": "Bad Request"
+        },
+        "201": {
+          "description": "Created"
+        }
+      }
+    },
+    "/api/time/times": {
+      "get": {
+        "summary": "Visualização de times",
+        "description": "Rota para visualizar todos os times",
+        "tags": ["time"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/time"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "500": {
+          "description": "Internal Server Error"
+        },
+        "200": {
+          "description": "Ok"
+        }
+      }
+    },
+    "/api/time/time": {
+      "get": {
+        "summary": "Visualização de time",
+        "description": "Rota para visualizar time",
+        "tags": ["time"],
+        "parameters": [
+          {
+            "nome": "time",
+            "description": "nome do time a ser buscado",
+            "in": "body",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/time"
+              },
+              "examples": {
+                "time": {
+                  "value": {
+                    "nome": "nome time"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "500": {
+          "description": "Internal Server Error"
+        },
+        "400": {
+          "description": "Bad Request"
+        },
+        "200": {
+          "description": "Ok"
+        }
+      }
+    },
+    "/api/time/edit": {
+      "edit": {
+        "summary": "Editar time",
+        "description": "Rota para editar time",
+        "tags": ["time"],
+        "parameters": [
+          {
+            "nome": "user@mail.com",
+            "description": "Novo nome do time",
+            "in": "body",
+            "required": true
+          },
+          {
+            "id":"1",
+            "description": "ID do time",
+            "in": "body",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/time"
+              },
+              "examples": {
+                "time": {
+                  "value": {
+                    "id": "user@mail.com",
+                    "nome": "novo nome"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "500": {
+          "description": "Internal Server Error"
+        },
+        "400": {
+          "description": "Bad Request"
+        },
+        "204": {
+          "description": "No Content"
+        }
+      }
+    },
+    "/api/time/delete": {
+      "delete": {
+        "summary": "Excluir Time",
+        "description": "Rota para excluir time",
+        "tags": ["Time"],
+        "parameters": [
+          {
+            "id": "1",
+            "in": "body",
+            "description": "Id do time a ser excluido",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/time"
+              },
+              "examples": {
+                "post": {
+                  "value": {
+                    "id": "1"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "500": {
+          "description": "Internal Server Error"
+        },
+        "400": {
+          "description": "Bad Request"
+        },
+        "204": {
+          "description": "No Content"
+        }
+      }
+    }
+  },
+  "components": {
     "schemas": {
-      "User": {
+      "time": {
         "type": "object",
         "properties": {
-          "email": {
+          "nome": {
+            "type": "string"
+          },
+          "jogador": {
+            "type": "string"
+          }
+        }
+      },
+      "jogador": {
+        "type": "object",
+        "properties": {
+          "id": {
             "type": "string"
           },
           "nome": {
             "type": "string"
           },
-          "nascimento": {
+          "idade": {
             "type": "string"
           },
-          "senha": {
+          "time_id": {
             "type": "string"
           }
         }
