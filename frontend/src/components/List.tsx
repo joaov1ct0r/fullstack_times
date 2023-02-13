@@ -1,5 +1,5 @@
 import React from "react";
-import { FiTrash, FiEdit } from "react-icons/fi";
+import { FiTrash, FiEdit, FiPlusSquare } from "react-icons/fi";
 import useDeleteTime from "../hooks/useDeleteTime";
 import useGetTimes from "../hooks/useGetTimes";
 import useTime from "../hooks/useTime";
@@ -34,6 +34,10 @@ export default function List() {
             <td>{time.nome}</td>
             <td>{time.jogador.length}</td>
             <td>
+              <button className="border border-white bg-success text-white" type="button" data-bs-toggle="modal"
+                data-bs-target="#createJogadorModal" onClick={() => setTime(time)}>
+                <FiPlusSquare size={20}></FiPlusSquare>
+              </button>
               <button className="border border-white bg-warning text-white" type="button" data-bs-toggle="modal"
                 data-bs-target="#editTimeModal" onClick={() => setTime(time)}>
                 <FiEdit size={20}></FiEdit>
