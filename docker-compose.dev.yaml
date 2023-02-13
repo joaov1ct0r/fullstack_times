@@ -54,9 +54,9 @@ services:
         depends_on:
             - db
             - api_times_dev
-        entrypoint: ["/bin/sh", "npm run dev"]
+        entrypoint: ['/bin/sh', './src/scripts/entrypoint.sh']
         volumes:
-            - .:/usr/src/app
+            - ./frontend:/usr/src/app
         env_file:
             - .env
         environment:
