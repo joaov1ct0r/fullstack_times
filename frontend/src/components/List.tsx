@@ -2,12 +2,12 @@ import React from "react";
 import { FiTrash, FiEdit, FiPlusSquare } from "react-icons/fi";
 import useDeleteTime from "../hooks/useDeleteTime";
 import useGetTimes from "../hooks/useGetTimes";
-import useTime from "../hooks/useTime";
+import useContextStates from "../hooks/useStates";
 import ITime from "../interfaces/ITime";
 
 export default function List() {
   const times = useGetTimes();
-  const { setTime } = useTime();
+  const { setTime } = useContextStates();
 
   return (
     <table className="table bg-white w-75 mt-3 border border-dark">
