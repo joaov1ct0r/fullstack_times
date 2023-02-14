@@ -1,5 +1,5 @@
 # Stage 1 Development
-FROM node:14 as development
+FROM node as development
 
 WORKDIR /usr/src/app
 
@@ -13,10 +13,10 @@ ADD . /usr/src/app
 
 RUN npm run build
 
-RUN npm i -g npm@latest
+# RUN npm i -g npm@latest
 
 # Stage 2 Production
-FROM node:14 as production
+FROM node as production
 
 WORKDIR /usr/src/app
 
@@ -32,4 +32,4 @@ RUN npm cache clean --force && npm cache verify
 
 RUN npm install -f --omit=dev
 
-RUN npm i -g npm@latest
+# RUN npm i -g npm@latest

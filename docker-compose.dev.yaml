@@ -10,7 +10,7 @@ services:
             - POSTGRES_USER=${DB_USER}
             - POSTGRES_PASSWORD=${DB_PASSWORD}
             - POSTGRES_DB=${DB_DATABASE}
-            - DATABASE_URL=${DATABASE_URL}`
+            - DATABASE_URL='postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DATABASE}?schema=sample'
         volumes:
             - ./backend/postgresDataDev:/var/lib/postgresql/data
         ports:
@@ -42,25 +42,25 @@ services:
         ports:
             - ${SERVER_PORT}:${SERVER_PORT}
 
-    react_times_dev:
-        container_name: react_times_dev
-        build:
-            args:
-                - NODE_ENV=${NODE_ENV}
-            context: ./frontend
-            dockerfile: Dockerfile
-            target: development
-        image: react_times_dev
-        depends_on:
-            - db
-            - api_times_dev
-        entrypoint: ['/bin/sh', './src/scripts/entrypoint.sh']
-        volumes:
-            - ./frontend:/usr/src/app
-        env_file:
-            - .env
-        environment:
-            - NODE_ENV=${NODE_ENV}
-        restart: always
-        ports:
-            - 5173:5173
+    # react_times_dev:
+    #     container_name: react_times_dev
+    #     build:
+    #         args:
+    #             - NODE_ENV=${NODE_ENV}
+    #         context: ./frontend
+    #         dockerfile: Dockerfile
+    #         target: development
+    #     image: react_times_dev
+    #     depends_on:
+    #         - db
+    #         - api_times_dev
+    #     entrypoint: ['/bin/sh', './src/scripts/entrypoint.sh']
+    #     volumes:
+    #         - ./frontend:/usr/src/app
+    #     env_file:
+    #         - .env
+    #     environment:
+    #         - NODE_ENV=${NODE_ENV}
+    #     restart: always
+    #     ports:
+    #         - 5173:5173
