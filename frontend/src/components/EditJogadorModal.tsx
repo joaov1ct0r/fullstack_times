@@ -1,11 +1,12 @@
+import React from "react";
 import useFormEditJogador from "../hooks/useFormEditJogador";
-import useJogador from "../hooks/useJogador";
 import IEditJogadorForm from "../interfaces/IEditJogadorForm";
 import useEditJogador from "../hooks/useEditJogador";
+import useContextStates from "../hooks/useContextStates";
 
 export default function EditJogadorModal() {
   const { handleSubmit, register, reset } = useFormEditJogador();
-  const { jogador } = useJogador();
+  const { jogador } = useContextStates();
 
   return (
     <div
@@ -31,9 +32,7 @@ export default function EditJogadorModal() {
           <form
             className="modal-body"
             onSubmit={handleSubmit((data: IEditJogadorForm) => {
-              const response = useEditJogador(data);
-
-              alert(response);
+              useEditJogador(data);
 
               reset();
             })}
@@ -50,10 +49,10 @@ export default function EditJogadorModal() {
                     value: /[0-9]{1,9}$/,
                     message: "ID Invalido",
                   },
-                  value: String(jogador?.id),
+                  value: String(jogador.id),
                 })}
                 type="number"
-                placeholder={String(jogador?.id)}
+                placeholder={String(jogador.id)}
                 className="form-control"
                 disabled
               ></input>
@@ -70,10 +69,10 @@ export default function EditJogadorModal() {
                     value: /[0-9]{1,9}$/,
                     message: "Time ID Invalido",
                   },
-                  value: String(jogador?.time_id),
+                  value: String(jogador.time_id),
                 })}
                 type="number"
-                placeholder={String(jogador?.time_id)}
+                placeholder={String(jogador.time_id)}
                 className="form-control"
                 disabled
               ></input>
@@ -114,7 +113,7 @@ export default function EditJogadorModal() {
                   },
                 })}
                 type="text"
-                placeholder="Nome:"
+                placeholder="Idade:"
                 className="form-control"
                 required
               ></input>
