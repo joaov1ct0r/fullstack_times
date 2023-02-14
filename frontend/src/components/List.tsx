@@ -21,7 +21,7 @@ export default function List() {
       </thead>
 
       <tbody>
-        {times?.map((time: ITime) => {
+        {times ? times.map((time: ITime) => {
 
           return (<tr
             className="text-center"
@@ -29,10 +29,10 @@ export default function List() {
             id={String(time?.id)}
           >
             <td>
-              {time?.id}
+              {time.id}
             </td>
-            <td>{time?.nome}</td>
-            <td>{time?.jogador?.length || 0}</td>
+            <td>{time.nome}</td>
+            <td>{time.jogador?.length || 0}</td>
             <td>
               <button className="border border-white bg-success text-white" type="button" data-bs-toggle="modal"
                 data-bs-target="#createJogadorModal" onClick={() => setTime(time)}>
@@ -52,7 +52,7 @@ export default function List() {
               </button>
             </td>
           </tr>)
-        })}
+        }) : <></>}
       </tbody>
     </table>
   );
