@@ -1,17 +1,18 @@
+import React from "react";
+import useContextStates from "../hooks/useContextStates";
 import useEditTime from "../hooks/useEditTime";
 import useFormEditTime from "../hooks/useFormEditTime";
-import useTime from "../hooks/useTime";
 import IEditTimeForm from "../interfaces/IEditTimeForm";
 
 export default function EditTimeModal() {
   const { handleSubmit, register, reset } = useFormEditTime();
-  const { time } = useTime();
+  const { time } = useContextStates();
 
   return (
     <div
       className="modal fade"
       id="editTimeModal"
-      tabIndex={-2}
+      tabIndex={-1}
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
@@ -48,10 +49,10 @@ export default function EditTimeModal() {
                     value: /[0-9]{1,9}$/,
                     message: "ID Invalido",
                   },
-                  value: String(time?.id),
+                  value: String(time.id),
                 })}
                 type="number"
-                placeholder={String(time?.id)}
+                placeholder={String(time.id)}
                 className="form-control"
                 disabled
               ></input>
