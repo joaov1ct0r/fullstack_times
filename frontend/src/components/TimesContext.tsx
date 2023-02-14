@@ -1,13 +1,7 @@
 import React, { createContext, useState } from "react";
 import IJogador from "../interfaces/IJogador";
 import ITime from "../interfaces/ITime";
-
-interface ITimesContextType {
-    time: ITime;
-    setTime: React.Dispatch<React.SetStateAction<ITime>>
-    jogador: IJogador;
-    setJogador: React.Dispatch<React.SetStateAction<IJogador>>
-}
+import ITimesContextType from "../interfaces/ITimesContextType";
 
 export const TimesContext = createContext<ITimesContextType | unknown>({});
 
