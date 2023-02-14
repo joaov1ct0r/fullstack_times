@@ -11,7 +11,7 @@ export default function EditTimeModal() {
     <div
       className="modal fade"
       id="editTimeModal"
-      tabIndex={-1}
+      tabIndex={-2}
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
@@ -31,9 +31,7 @@ export default function EditTimeModal() {
           <form
             className="modal-body"
             onSubmit={handleSubmit((data: IEditTimeForm) => {
-              const response = useEditTime(data);
-
-              alert(response);
+              useEditTime(data);
 
               reset();
             })}
@@ -50,10 +48,10 @@ export default function EditTimeModal() {
                     value: /[0-9]{1,9}$/,
                     message: "ID Invalido",
                   },
-                  value: String(time!.id),
+                  value: String(time?.id),
                 })}
                 type="number"
-                placeholder={String(time!.id)}
+                placeholder={String(time?.id)}
                 className="form-control"
                 disabled
               ></input>

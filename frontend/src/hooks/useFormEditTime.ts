@@ -12,7 +12,7 @@ export default function useFormEditTime() {
   } = useForm<IEditTimeForm>({
     defaultValues: {
     nome: "",
-    id: String(time!.id),
+    id: String(time?.id),
     },
   });
 

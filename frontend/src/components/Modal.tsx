@@ -30,10 +30,7 @@ export default function Modal(): JSX.Element {
           <form
             className="modal-body"
             onSubmit={handleSubmit((data: ICreateTime) => {
-              const response = useCreateTime(data);
-
-              alert(response);
-
+              useCreateTime(data);
               reset();
             })}
           >

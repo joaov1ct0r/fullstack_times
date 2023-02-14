@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import request from "../api/config";
 
 interface IDeleteTimeReq {
@@ -6,15 +5,9 @@ interface IDeleteTimeReq {
 }
 
 export default function useDeleteTime(data: string) {
-  const [message, setMessage] = useState("");
-  
-  useEffect(() => {
-    request.delete<IDeleteTimeReq>("/api/time/delete", {
-      data: {
-        id: data
-      }
-    }).then(response => setMessage(response.data.message))
-  }, [])
-
-  return message;
+  request.delete<IDeleteTimeReq>("/api/time/delete", {
+    data: {
+      id: data
+    }
+  })
 }

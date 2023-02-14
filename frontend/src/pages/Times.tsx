@@ -1,4 +1,5 @@
 import CreateJogadorModal from "../components/CreateJogadorModal";
+import EditTimeModal from "../components/EditTimeModal";
 import Header from "../components/Header";
 import List from "../components/List";
 import Modal from "../components/Modal";
@@ -10,10 +11,11 @@ export default function Times(): JSX.Element {
       <Header />
       <div className="d-flex justify-content-center mt-5">
         <List />
+        <CreateJogadorModal />
+        <EditTimeModal />
       </div>
       <ModalButton />
       <Modal />
-      <CreateJogadorModal />
     </div>
   )
 }

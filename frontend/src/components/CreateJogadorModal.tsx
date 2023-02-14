@@ -10,7 +10,7 @@ export default function CreateJogadorModal() {
   return (
     <div
       className="modal fade"
-      id="editJogadorModal"
+      id="createJogadorModal"
       tabIndex={-1}
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
@@ -31,9 +31,7 @@ export default function CreateJogadorModal() {
           <form
             className="modal-body"
             onSubmit={handleSubmit((data: ICreateJogadorForm) => {
-              const response = useCreateJogador(data);
-
-              alert(response);
+              useCreateJogador(data);
 
               reset();
             })}
@@ -93,7 +91,7 @@ export default function CreateJogadorModal() {
                   },
                 })}
                 type="text"
-                placeholder="Nome:"
+                placeholder="Idade:"
                 className="form-control"
                 required
               ></input>

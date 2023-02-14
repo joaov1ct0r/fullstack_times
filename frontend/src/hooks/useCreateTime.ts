@@ -9,13 +9,7 @@ interface ICreateTimeReq {
 }
 
 export default function useCreateTime(data: ICreateTime) {
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    request.post<ICreateTimeReq>("/api/time/create", {
-      nome: data.nome
-    }).then((response) => setMessage(response.data.message))
-  }, [])
-
-  return message;
+  request.post<ICreateTimeReq>("/api/time/create", {
+    nome: data.nome
+  })
 }
