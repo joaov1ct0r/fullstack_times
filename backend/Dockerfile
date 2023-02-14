@@ -13,8 +13,6 @@ ADD . /usr/src/app
 
 RUN npm run build
 
-# RUN npm i -g npm@latest
-
 # Stage 2 Production
 FROM node as production
 
@@ -31,5 +29,3 @@ COPY --from=development /usr/src/app/src/scripts ./src/scripts
 RUN npm cache clean --force && npm cache verify
 
 RUN npm install -f --omit=dev
-
-# RUN npm i -g npm@latest

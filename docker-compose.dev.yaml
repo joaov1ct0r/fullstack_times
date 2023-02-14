@@ -42,25 +42,25 @@ services:
         ports:
             - ${SERVER_PORT}:${SERVER_PORT}
 
-    # react_times_dev:
-    #     container_name: react_times_dev
-    #     build:
-    #         args:
-    #             - NODE_ENV=${NODE_ENV}
-    #         context: ./frontend
-    #         dockerfile: Dockerfile
-    #         target: development
-    #     image: react_times_dev
-    #     depends_on:
-    #         - db
-    #         - api_times_dev
-    #     entrypoint: ['/bin/sh', './src/scripts/entrypoint.sh']
-    #     volumes:
-    #         - ./frontend:/usr/src/app
-    #     env_file:
-    #         - .env
-    #     environment:
-    #         - NODE_ENV=${NODE_ENV}
-    #     restart: always
-    #     ports:
-    #         - 5173:5173
+    react_times_dev:
+        container_name: react_times_dev
+        build:
+            args:
+                - NODE_ENV=${NODE_ENV}
+            context: ./frontend
+            dockerfile: Dockerfile
+            target: development
+        image: react_times_dev
+        depends_on:
+            - db
+            - api_times_dev
+        entrypoint: ['/bin/sh', './src/scripts/entrypoint.sh']
+        volumes:
+            - ./frontend:/usr/src/app
+        env_file:
+            - .env
+        environment:
+            - NODE_ENV=${NODE_ENV}
+        restart: always
+        ports:
+            - 5173:5173

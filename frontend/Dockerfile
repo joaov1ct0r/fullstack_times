@@ -1,5 +1,5 @@
 # Stage 1 Development
-FROM node:14 as development
+FROM node as development
 
 WORKDIR /usr/src/app
 
@@ -12,8 +12,6 @@ RUN npm install
 ADD . /usr/src/app
 
 RUN npm run build
-
-RUN npm i -g npm@latest
 
 # Stage 2 Production
 FROM nginx as production
