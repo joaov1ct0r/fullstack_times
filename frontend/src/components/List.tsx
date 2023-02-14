@@ -2,7 +2,7 @@ import React from "react";
 import { FiTrash, FiEdit, FiPlusSquare } from "react-icons/fi";
 import useDeleteTime from "../hooks/useDeleteTime";
 import useGetTimes from "../hooks/useGetTimes";
-import useContextStates from "../hooks/useStates";
+import useContextStates from "../hooks/useContextStates";
 import ITime from "../interfaces/ITime";
 
 export default function List() {
