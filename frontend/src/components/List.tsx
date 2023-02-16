@@ -1,11 +1,10 @@
 import React from "react";
 import { FiTrash, FiEdit, FiPlusSquare } from "react-icons/fi";
-import useDeleteTime from "../hooks/useDeleteTime";
 import useContextStates from "../hooks/useContextStates";
 import ITime from "../interfaces/ITime";
 
 export default function List() {
-  const { setTime, times } = useContextStates();
+  const { setTime, times, deleteTime } = useContextStates();
 
   return (
     <table className="table bg-white w-75 mt-3 border border-dark">
@@ -43,7 +42,7 @@ export default function List() {
               <button
                 className="border border-white bg-danger text-white"
                 onClick={(e) => {
-                  useDeleteTime(e.currentTarget.parentElement!.parentElement!.id)
+                  deleteTime(e.currentTarget.parentElement!.parentElement!.id)
                 }}
               >
                 <FiTrash size={20}></FiTrash>
