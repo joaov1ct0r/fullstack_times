@@ -1,13 +1,11 @@
 import React from "react";
 import { FiTrash, FiEdit, FiPlusSquare } from "react-icons/fi";
 import useDeleteTime from "../hooks/useDeleteTime";
-import useGetTimes from "../hooks/useGetTimes";
 import useContextStates from "../hooks/useContextStates";
 import ITime from "../interfaces/ITime";
 
 export default function List() {
-  const times = useGetTimes();
-  const { setTime } = useContextStates();
+  const { setTime, times } = useContextStates();
 
   return (
     <table className="table bg-white w-75 mt-3 border border-dark">
@@ -25,8 +23,8 @@ export default function List() {
 
           return (<tr
             className="text-center"
-            key={String(time?.id)}
-            id={String(time?.id)}
+            key={String(time.id)}
+            id={String(time.id)}
           >
             <td>
               {time.id}
