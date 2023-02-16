@@ -48,10 +48,10 @@ export default function CreateJogadorModal() {
                     value: /[0-9]{1,9}$/,
                     message: "Time ID Invalido",
                   },
-                  value: String(time.id),
+                  value: String(time?.id),
                 })}
                 type="number"
-                placeholder={String(time.id)}
+                placeholder={String(time?.id)}
                 className="form-control"
                 disabled
               ></input>
