@@ -1,12 +1,11 @@
 import React from "react";
 import useContextStates from "../hooks/useContextStates";
-import useCreateTime from "../hooks/useCreateTime";
 import useFormTime from "../hooks/useFormTime";
 import ICreateTime from "../interfaces/ICreateTime";
 
 export default function Modal(): JSX.Element {
   const { handleSubmit, register, reset } = useFormTime();
-  const {setShouldFetch} = useContextStates();
+  const {setShouldFetch, createTime} = useContextStates();
 
   return (
     <div
@@ -32,7 +31,7 @@ export default function Modal(): JSX.Element {
           <form
             className="modal-body"
             onSubmit={handleSubmit((data: ICreateTime) => {
-              useCreateTime(data)
+              createTime(data)
               setShouldFetch(true)
               reset();
             })}
