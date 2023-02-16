@@ -1,18 +1,17 @@
 import React from "react";
 import useContextStates from "../hooks/useContextStates";
-import useEditTime from "../hooks/useEditTime";
 import useFormEditTime from "../hooks/useFormEditTime";
 import IEditTimeForm from "../interfaces/IEditTimeForm";
 
 export default function EditTimeModal() {
   const { handleSubmit, register, reset } = useFormEditTime();
-  const { time } = useContextStates();
+  const { time, editTime } = useContextStates();
 
   return (
     <div
       className="modal fade"
       id="editTimeModal"
-      tabIndex={-1}
+      tabIndex={-3}
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
@@ -32,23 +31,14 @@ export default function EditTimeModal() {
           <form
             className="modal-body"
             onSubmit={handleSubmit((data: IEditTimeForm) => {
-              useEditTime(data);
-
-              reset();
+              editTime(data)
+              reset()
             })}
           >
 
             <div className="input-group mb-3">
               <input
                 {...register("id", {
-                  required: {
-                    value: true,
-                    message: "ID é obrigatorio",
-                  },
-                  pattern: {
-                    value: /[0-9]{1,9}$/,
-                    message: "ID Invalido",
-                  },
                   value: String(time?.id),
                 })}
                 type="number"
@@ -88,7 +78,7 @@ export default function EditTimeModal() {
               Fechar
             </button>
             <button type="submit" className="btn btn-success">
-              Criar
+              Editar
             </button>
           </form>
         </div>
