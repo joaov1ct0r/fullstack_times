@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import IEditTimeForm from "../interfaces/IEditTimeForm";
-import useTime from "./useTime";
+import useContextStates from "./useContextStates";
 
 export default function useFormEditTime() {
-  const { time } = useTime();
+  const { time } = useContextStates();
+  
   const {
     register,
     handleSubmit,
