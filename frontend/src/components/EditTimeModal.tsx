@@ -49,10 +49,10 @@ export default function EditTimeModal() {
                     value: /[0-9]{1,9}$/,
                     message: "ID Invalido",
                   },
-                  value: String(time.id),
+                  value: String(time?.id),
                 })}
                 type="number"
-                placeholder={String(time.id)}
+                placeholder={String(time?.id)}
                 className="form-control"
                 disabled
               ></input>
