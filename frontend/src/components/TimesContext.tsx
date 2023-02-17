@@ -1,9 +1,12 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import request from "../api/config";
+import ICreateJogadorForm from "../interfaces/ICreateJogadorForm";
+import ICreateJogadorReq from "../interfaces/ICreateJogadorReq";
 import ICreateTime from "../interfaces/ICreateTime";
 import ICreateTimeReq from "../interfaces/ICreateTimeReq";
 import IDeleteTimeReq from "../interfaces/IDeleteTimeReq";
+import IEditJogadorForm from "../interfaces/IEditJogadorForm";
 import IEditTimeForm from "../interfaces/IEditTimeForm";
 import IEditTimeProps from "../interfaces/IEditTimeProps";
 import IGetTimesReq from "../interfaces/IGetTimesReq";
@@ -92,6 +95,66 @@ export function TimesProvider(props: ITimesContextProps) {
     
       return { register, handleSubmit, reset, errors };
     }
+
+    function createJogador(data: ICreateJogadorForm) {
+      request.post<ICreateJogadorReq>("/api/jogador/create", {
+        nome: data.nome,
+        idade: data.idade,
+        id: data.time_id
+      }).then(() => setShouldFetch(true))
+    }
+
+    function useFormCreateJogador() {
+      const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+      } = useForm<ICreateJogadorForm>({
+        defaultValues: {
+        nome: "",
+        idade: "",
+        time_id: String(time?.id),
+        },
+      });
+    
+      return { register, handleSubmit, reset, errors };
+    }
+
+    function editJogador(data: IEditJogadorForm) {
+      request.put("/api/jogador/edit", {
+        id: data.id,
+        nome: data.nome,
+        idade: data.idade,
+        time_id: data.time_id
+      }).then(() => setShouldFetch(true))
+    }
+
+    function useFormEditJogador() {
+      const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+      } = useForm<IEditJogadorForm>({
+        defaultValues: {
+        nome: "",
+        idade: "",
+        time_id: String(jogador?.time_id),
+        id: String(jogador?.id),
+        },
+      });
+    
+      return { register, handleSubmit, reset, errors };
+    }
+
+    function deleteJogador(id: string) {
+      request.delete("/api/jogador/delete", {
+        data: {
+          id
+        }
+      }).then(() => setShouldFetch(true))
+    }
     
     return (
         <TimesContext.Provider value={
@@ -109,7 +172,12 @@ export function TimesProvider(props: ITimesContextProps) {
             deleteTime,
             searchTime,
             useFormTime,
-            useFormEditTime
+            useFormEditTime,
+            createJogador,
+            useFormCreateJogador,
+            editJogador,
+            useFormEditJogador,
+            deleteJogador
           }
           }>
           {props.children}

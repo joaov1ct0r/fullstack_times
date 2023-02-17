@@ -1,5 +1,7 @@
 import { FieldErrors, UseFormHandleSubmit, UseFormRegister, UseFormReset } from "react-hook-form";
+import ICreateJogadorForm from "./ICreateJogadorForm";
 import ICreateTime from "./ICreateTime";
+import IEditJogadorForm from "./IEditJogadorForm";
 import IEditTimeForm from "./IEditTimeForm";
 import IEditTimeProps from "./IEditTimeProps";
 import IJogador from "./IJogador";
@@ -30,4 +32,19 @@ export default interface ITimesContextType {
         reset: UseFormReset<IEditTimeForm>
         errors: FieldErrors<IEditTimeForm>
     }
+    createJogador(data: ICreateJogadorForm): void
+    useFormCreateJogador(): {
+        register: UseFormRegister<ICreateJogadorForm>;
+        handleSubmit: UseFormHandleSubmit<ICreateJogadorForm>;
+        reset: UseFormReset<ICreateJogadorForm>;
+        errors: FieldErrors<ICreateJogadorForm>;
+    }
+    editJogador(data: IEditJogadorForm): void
+    useFormEditJogador(): {
+        register: UseFormRegister<IEditJogadorForm>;
+        handleSubmit: UseFormHandleSubmit<IEditJogadorForm>;
+        reset: UseFormReset<IEditJogadorForm>;
+        errors: FieldErrors<IEditJogadorForm>;
+    }
+    deleteJogador(id: string): void
 }
