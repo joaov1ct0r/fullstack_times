@@ -1,13 +1,11 @@
 import React from "react";
-import useFormEditJogador from "../hooks/useFormEditJogador";
 import IEditJogadorForm from "../interfaces/IEditJogadorForm";
-import useEditJogador from "../hooks/useEditJogador";
 import useContextStates from "../hooks/useContextStates";
 
 export default function EditJogadorModal() {
+  const { jogador, editJogador, useFormEditJogador } = useContextStates();
+  
   const { handleSubmit, register, reset } = useFormEditJogador();
-  const { jogador } = useContextStates();
-
   return (
     <div
       className="modal fade"
@@ -32,7 +30,7 @@ export default function EditJogadorModal() {
           <form
             className="modal-body"
             onSubmit={handleSubmit((data: IEditJogadorForm) => {
-              useEditJogador(data);
+              editJogador(data);
 
               reset();
             })}
