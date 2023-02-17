@@ -1,16 +1,14 @@
 import React from "react";
-import useFormSearchTime from "../hooks/useFormSearchTime";
-import useSearchTime from "../hooks/useSearchTime";
+import useContextStates from "../hooks/useContextStates";
 import ICreateTime from "../interfaces/ICreateTime";
 
 export default function SearchTime() {
-  const { handleSubmit, register, reset } = useFormSearchTime();
+  const {useFormTime, searchTime} = useContextStates();
+
+  const { handleSubmit, register, reset } = useFormTime();
   return (
     <form className="d-flex" role="search" onSubmit={() => handleSubmit((data: ICreateTime) => {
-      const response = useSearchTime(data);
-
-      alert(response);
-
+      searchTime(data);
       reset()
     })}>
       <input {...register("nome", {
