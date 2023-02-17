@@ -31,24 +31,14 @@ export default function CreateJogadorModal() {
           <form
             className="modal-body"
             onSubmit={handleSubmit((data: ICreateJogadorForm) => {
-              createJogador(data);
+              createJogador({nome: data.nome, idade: data.idade, time_id: String(time.id)});
 
               reset();
             })}
           >
             <div className="input-group mb-3">
               <input
-                {...register("time_id", {
-                  required: {
-                    value: true,
-                    message: "Time ID é obrigatorio",
-                  },
-                  pattern: {
-                    value: /[0-9]{1,9}$/,
-                    message: "Time ID Invalido",
-                  },
-                  value: String(time?.id),
-                })}
+                {...register("time_id")}
                 type="number"
                 placeholder={String(time?.id)}
                 className="form-control"
