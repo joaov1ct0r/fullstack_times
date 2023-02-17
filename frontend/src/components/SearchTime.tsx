@@ -3,7 +3,7 @@ import useContextStates from "../hooks/useContextStates";
 import ICreateTime from "../interfaces/ICreateTime";
 
 export default function SearchTime() {
-  const {useFormTime, searchTime} = useContextStates();
+  const { useFormTime, searchTime } = useContextStates();
 
   const { handleSubmit, register, reset } = useFormTime();
   return (
