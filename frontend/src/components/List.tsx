@@ -29,7 +29,7 @@ export default function List() {
               {time.id}
             </td>
             <td>{time.nome}</td>
-            <td>{time.jogador?.length || 0}</td>
+            <td>{time.Jogador ? time.Jogador.length : 0}</td>
             <td>
               <button className="border border-white bg-success text-white" type="button" data-bs-toggle="modal"
                 data-bs-target="#createJogadorModal" onClick={() => setTime(time)}>
