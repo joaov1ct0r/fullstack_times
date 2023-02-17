@@ -49,7 +49,7 @@ export function TimesProvider(props: ITimesContextProps) {
       request.put("/api/time/edit", {
         nome,
         id
-      }).catch((e) => console.log(e)).then(() => setShouldFetch(true))
+      }).then(() => setShouldFetch(true))
     }
 
     function deleteTime(data: string) {

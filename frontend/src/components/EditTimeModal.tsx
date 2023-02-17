@@ -31,7 +31,6 @@ export default function EditTimeModal() {
           <form
             className="modal-body"
             onSubmit={handleSubmit((data: IEditTimeForm) => {
-              console.log()
               editTime({nome: data.nome, id: String(time.id)})
               reset()
             })}
