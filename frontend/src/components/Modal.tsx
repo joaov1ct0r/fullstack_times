@@ -1,11 +1,11 @@
 import React from "react";
 import useContextStates from "../hooks/useContextStates";
-import useFormTime from "../hooks/useFormTime";
 import ICreateTime from "../interfaces/ICreateTime";
 
 export default function Modal(): JSX.Element {
+  const { setShouldFetch, createTime, useFormTime } = useContextStates();
+
   const { handleSubmit, register, reset } = useFormTime();
-  const {setShouldFetch, createTime} = useContextStates();
 
   return (
     <div
