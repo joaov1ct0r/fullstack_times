@@ -14,7 +14,7 @@ export default class CreateJogadorController {
       throw new BadRequest(error.message);
     }
 
-    const { nome, idade, id } = req.body;
+    const { nome, idade, time_id } = req.body;
 
     const getJogadorRepository = new GetJogadorRepository();
 
@@ -32,7 +32,7 @@ export default class CreateJogadorController {
       const jogador = await createJogadorService.execute(
         nome,
         Number(idade),
-        Number(id)
+        Number(time_id)
       );
 
       return res.status(201).json({ jogador, message: "Jogador criado" });
