@@ -42,7 +42,7 @@ export default function List() {
               <button
                 className="border border-white bg-danger text-white"
                 onClick={(e) => {
-                  deleteTime(e.currentTarget.parentElement!.parentElement!.id)
+                  deleteTime(String(time.id))
                 }}
               >
                 <FiTrash size={20}></FiTrash>
