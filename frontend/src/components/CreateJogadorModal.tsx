@@ -1,12 +1,11 @@
 import React from "react";
 import ICreateJogadorForm from "../interfaces/ICreateJogadorForm";
-import useFormCreateJogador from "../hooks/useFormCreateJogador";
-import useCreateJogador from "../hooks/useCreateJogador";
 import useContextStates from "../hooks/useContextStates";
 
 export default function CreateJogadorModal() {
+  const { time, useFormCreateJogador, createJogador } = useContextStates();
+  
   const { handleSubmit, register, reset } = useFormCreateJogador();
-  const { time } = useContextStates();
 
   return (
     <div
@@ -32,7 +31,7 @@ export default function CreateJogadorModal() {
           <form
             className="modal-body"
             onSubmit={handleSubmit((data: ICreateJogadorForm) => {
-              useCreateJogador(data);
+              createJogador(data);
 
               reset();
             })}
