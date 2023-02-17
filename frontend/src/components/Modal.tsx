@@ -32,7 +32,6 @@ export default function Modal(): JSX.Element {
             className="modal-body"
             onSubmit={handleSubmit((data: ICreateTime) => {
               createTime(data)
-              setShouldFetch(true)
               reset();
             })}
           >
