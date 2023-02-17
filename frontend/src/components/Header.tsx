@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useContextStates from "../hooks/useContextStates";
 
 export default function Header(): JSX.Element {
   return (
