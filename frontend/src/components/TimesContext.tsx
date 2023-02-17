@@ -30,6 +30,8 @@ export function TimesProvider(props: ITimesContextProps) {
 
     const [shouldFetch, setShouldFetch] = useState(true);
 
+    useEffect(() => console.log(time), [time])
+
     useEffect(() => {
       request.get<IGetTimesReq>("/api/time/times").then((response) => {
         setTimes(response.data.times)
@@ -43,10 +45,11 @@ export function TimesProvider(props: ITimesContextProps) {
     }
 
     function editTime({ id, nome }: IEditTimeProps) {
+      console.log({id, nome})
       request.put("/api/time/edit", {
         nome,
         id
-      }).then(() => setShouldFetch(true))
+      }).catch((e) => console.log(e)).then(() => setShouldFetch(true))
     }
 
     function deleteTime(data: string) {

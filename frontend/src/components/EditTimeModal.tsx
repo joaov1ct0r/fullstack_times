@@ -31,16 +31,15 @@ export default function EditTimeModal() {
           <form
             className="modal-body"
             onSubmit={handleSubmit((data: IEditTimeForm) => {
-              editTime(data)
+              console.log()
+              editTime({nome: data.nome, id: String(time.id)})
               reset()
             })}
           >
 
             <div className="input-group mb-3">
               <input
-                {...register("id", {
-                  value: String(time?.id),
-                })}
+                {...register("id")}
                 type="number"
                 placeholder={String(time?.id)}
                 className="form-control"
