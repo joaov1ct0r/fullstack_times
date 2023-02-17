@@ -40,9 +40,7 @@ export default function ListTime() {
               <button
                 className="border border-white bg-danger text-white"
                 onClick={(e) => {
-                  const response = deleteJogador(e.currentTarget.parentElement!.parentElement!.id)
-
-                  alert(response)
+                  deleteJogador(String(jogador.id))
                 }}
               >
                 <FiTrash size={20}></FiTrash>
