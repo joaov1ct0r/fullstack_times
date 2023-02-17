@@ -1,13 +1,10 @@
 import React from "react";
 import { FiTrash, FiEdit } from "react-icons/fi";
-import useTime from "../hooks/useTime";
 import IJogador from "../interfaces/IJogador";
-import useJogador from "../hooks/useJogador";
-import useDeleteJogador from "../hooks/useDeleteJogador";
+import useContextStates from "../hooks/useContextStates";
 
 export default function ListTime() {
-  const { time } = useTime();
-  const { setJogador } = useJogador();
+  const {time, setJogador, deleteJogador, } = useContextStates();
 
   return (
     <table className="table bg-white w-75 mt-3 border border-dark">
@@ -22,7 +19,7 @@ export default function ListTime() {
       </thead>
 
       <tbody>
-        {time?.jogador?.map((jogador: IJogador) => {
+        {time ? time.jogador?.map((jogador: IJogador) => {
 
           return (<tr
             className="text-center text-danger"
@@ -43,7 +40,7 @@ export default function ListTime() {
               <button
                 className="border border-white bg-danger text-white"
                 onClick={(e) => {
-                  const response = useDeleteJogador(e.currentTarget.parentElement!.parentElement!.id)
+                  const response = deleteJogador(e.currentTarget.parentElement!.parentElement!.id)
 
                   alert(response)
                 }}
@@ -52,7 +49,7 @@ export default function ListTime() {
               </button>
             </td>
           </tr>)
-        })}
+        }): <></>}
       </tbody>
     </table>
   );
