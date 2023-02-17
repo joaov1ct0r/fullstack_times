@@ -1,12 +1,12 @@
 import React from "react";
 import useContextStates from "../hooks/useContextStates";
-import useFormEditTime from "../hooks/useFormEditTime";
 import IEditTimeForm from "../interfaces/IEditTimeForm";
 
 export default function EditTimeModal() {
+  const { time, editTime, useFormEditTime } = useContextStates();
+  
   const { handleSubmit, register, reset } = useFormEditTime();
-  const { time, editTime } = useContextStates();
-
+  
   return (
     <div
       className="modal fade"
