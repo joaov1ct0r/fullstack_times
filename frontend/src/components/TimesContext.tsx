@@ -30,7 +30,7 @@ export function TimesProvider(props: ITimesContextProps) {
 
     const [shouldFetch, setShouldFetch] = useState(true);
 
-    useEffect(() => console.log(time), [time])
+    useEffect(() => console.log("Should fetch?", shouldFetch), [shouldFetch])
 
     useEffect(() => {
       request.get<IGetTimesReq>("/api/time/times").then((response) => {
@@ -45,7 +45,6 @@ export function TimesProvider(props: ITimesContextProps) {
     }
 
     function editTime({ id, nome }: IEditTimeProps) {
-      console.log({id, nome})
       request.put("/api/time/edit", {
         nome,
         id
@@ -103,7 +102,7 @@ export function TimesProvider(props: ITimesContextProps) {
       request.post<ICreateJogadorReq>("/api/jogador/create", {
         nome: data.nome,
         idade: data.idade,
-        id: data.time_id
+        time_id: data.time_id
       }).then(() => setShouldFetch(true))
     }
 
