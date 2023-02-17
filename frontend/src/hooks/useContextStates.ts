@@ -15,7 +15,9 @@ export default function useContextStates() {
         createTime,
         editTime,
         deleteTime,
-        searchTime
+        searchTime,
+        useFormTime,
+        useFormEditTime
     } = useContext(TimesContext) as ITimesContextType
 
     return {
@@ -30,6 +32,8 @@ export default function useContextStates() {
         createTime,
         editTime,
         deleteTime,
-        searchTime
+        searchTime,
+        useFormTime,
+        useFormEditTime
     }
 }

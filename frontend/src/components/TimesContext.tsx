@@ -1,8 +1,10 @@
 import React, { createContext, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import request from "../api/config";
 import ICreateTime from "../interfaces/ICreateTime";
 import ICreateTimeReq from "../interfaces/ICreateTimeReq";
 import IDeleteTimeReq from "../interfaces/IDeleteTimeReq";
+import IEditTimeForm from "../interfaces/IEditTimeForm";
 import IEditTimeProps from "../interfaces/IEditTimeProps";
 import IGetTimesReq from "../interfaces/IGetTimesReq";
 import IJogador from "../interfaces/IJogador";
@@ -28,8 +30,7 @@ export function TimesProvider(props: ITimesContextProps) {
     useEffect(() => {
       request.get<IGetTimesReq>("/api/time/times").then((response) => {
         setTimes(response.data.times)
-        setShouldFetch(false)
-      })
+      }).then (() => setShouldFetch(false))
     }, [shouldFetch])
 
     function createTime(data: ICreateTime) {
@@ -50,7 +51,7 @@ export function TimesProvider(props: ITimesContextProps) {
         data: {
           id: data
         }
-      })
+      }).then(() => setShouldFetch(true))
     }
 
     function searchTime({ nome }: ICreateTime) {
@@ -59,6 +60,37 @@ export function TimesProvider(props: ITimesContextProps) {
           nome
         }
       }).then(response => setTime(response.data.time))
+    }
+
+    function useFormTime() {
+      const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+      } = useForm<ICreateTime>({
+        defaultValues: {
+        nome: "",
+        },
+      });
+    
+      return { register, handleSubmit, reset, errors };
+    }
+
+    function useFormEditTime() {
+      const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+      } = useForm<IEditTimeForm>({
+        defaultValues: {
+        nome: "",
+        id: String(time?.id),
+        },
+      });
+    
+      return { register, handleSubmit, reset, errors };
     }
     
     return (
@@ -75,7 +107,9 @@ export function TimesProvider(props: ITimesContextProps) {
             createTime,
             editTime,
             deleteTime,
-            searchTime
+            searchTime,
+            useFormTime,
+            useFormEditTime
           }
           }>
           {props.children}
