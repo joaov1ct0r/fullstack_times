@@ -28,20 +28,13 @@ export default class EditJogadorController {
       editJogadorRepository
     );
 
-    try {
-      await editJogadorService.execute(
-        Number(id),
-        nome,
-        idade,
-        Number(time_id)
-      );
+    await editJogadorService.execute(
+      Number(id),
+      nome,
+      Number(idade),
+      Number(time_id)
+    );
 
-      return res.status(204).send();
-    } catch (err: any) {
-      return res.status(err.statusCode).json({
-        error: err.message,
-        status: err.statusCode,
-      });
-    }
+    return res.status(204).send();
   }
 }
