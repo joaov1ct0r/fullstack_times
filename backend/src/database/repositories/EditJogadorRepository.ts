@@ -2,14 +2,13 @@ import IEditJogadorRepository from "../../interfaces/IEditJogadorRepository";
 import prismaClient from "../prismaClient";
 
 export default class EditJogadorRepository implements IEditJogadorRepository {
-  async execute(id: number, nome: string, idade: number, time_id: number) {
+  async execute(id: number, nome: string, idade: number) {
     const jogador = await prismaClient.jogador.update({
+      where: { id },
       data: {
         nome,
-        idade,
-        time_id,
+        idade
       },
-      where: { id },
     });
 
     return jogador;
