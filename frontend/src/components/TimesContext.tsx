@@ -22,15 +22,19 @@ interface ITimesContextProps {
 }
 
 export function TimesProvider(props: ITimesContextProps) {
+    const [times, setTimes] = useState<ITime[]>();
+
     const [time, setTime] = useState<ITime>();
+
+    const [shouldFetch, setShouldFetch] = useState(false);
 
     const [jogador, setJogador] = useState<IJogador>();
 
-    const [times, setTimes] = useState<ITime[]>();
+    const [shouldFetchTime, setShouldFetchTime] = useState(false);
 
-    const [shouldFetch, setShouldFetch] = useState(true);
-
-    useEffect(() => console.log("Should fetch?", shouldFetch), [shouldFetch])
+    useEffect(() => {
+      time ? searchTime({nome: String(time.nome)}) : null
+    }, [shouldFetchTime])
 
     useEffect(() => {
       request.get<IGetTimesReq>("/api/time/times").then((response) => {
@@ -60,11 +64,11 @@ export function TimesProvider(props: ITimesContextProps) {
     }
 
     function searchTime({ nome }: ICreateTime) {
-      request.get<ISearchTimeReq>("/api/time/time", {
-        data: {
-          nome
-        }
-      }).then(response => setTime(response.data.time))
+      request.post<ISearchTimeReq>("/api/time/time", {
+        nome
+      }).then(response => {
+        setTime(response.data.time)
+      })
     }
 
     function useFormTime() {
@@ -124,12 +128,16 @@ export function TimesProvider(props: ITimesContextProps) {
     }
 
     function editJogador(data: IEditJogadorForm) {
+      console.log(data)
       request.put("/api/jogador/edit", {
         id: data.id,
         nome: data.nome,
         idade: data.idade,
         time_id: data.time_id
-      }).then(() => setShouldFetch(true))
+      }).then(() => {
+        setShouldFetch(true)
+        setShouldFetchTime(true)
+      })
     }
 
     function useFormEditJogador() {
@@ -155,7 +163,10 @@ export function TimesProvider(props: ITimesContextProps) {
         data: {
           id
         }
-      }).then(() => setShouldFetch(true))
+      }).then(() => {
+        setShouldFetch(true)
+        setShouldFetchTime(true)
+      })
     }
     
     return (
