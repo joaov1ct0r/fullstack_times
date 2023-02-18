@@ -53,7 +53,7 @@ export default class App {
 
   private async routes() {
     this.server.use("/api/time", timeRouter);
-    this.server.use("/api/jogador", jogadorRouter);
     this.server.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+    this.server.use("/api/jogador", jogadorRouter);
   }
 }
