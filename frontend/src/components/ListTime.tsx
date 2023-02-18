@@ -38,7 +38,7 @@ export default function ListTime() {
               </button>
               <button
                 className="border border-white bg-danger text-white"
-                onClick={(e) => {
+                onClick={() => {
                   deleteJogador(String(jogador.id))
                 }}
               >
