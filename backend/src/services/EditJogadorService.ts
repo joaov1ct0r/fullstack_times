@@ -52,6 +52,6 @@ export default class EditJogadorService {
       throw new BadRequest("Nome já cadastrado!");
     }
 
-    await this.editJogadorRepository.execute(id, nome, idade, time_id);
+    await this.editJogadorRepository.execute(id, nome, idade);
   }
 }
