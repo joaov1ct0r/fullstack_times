@@ -38,19 +38,8 @@ export default function EditJogadorModal() {
 
             <div className="input-group mb-3">
               <input
-                {...register("id", {
-                  required: {
-                    value: true,
-                    message: "ID é obrigatorio",
-                  },
-                  pattern: {
-                    value: /[0-9]{1,9}$/,
-                    message: "ID Invalido",
-                  },
-                  value: String(jogador.id),
-                })}
                 type="number"
-                placeholder={String(jogador.id)}
+                placeholder={String(jogador?.id)}
                 className="form-control"
                 disabled
               ></input>
@@ -58,19 +47,8 @@ export default function EditJogadorModal() {
 
             <div className="input-group mb-3">
               <input
-                {...register("time_id", {
-                  required: {
-                    value: true,
-                    message: "Time ID é obrigatorio",
-                  },
-                  pattern: {
-                    value: /[0-9]{1,9}$/,
-                    message: "Time ID Invalido",
-                  },
-                  value: String(jogador.time_id),
-                })}
                 type="number"
-                placeholder={String(jogador.time_id)}
+                placeholder={String(jogador?.time_id)}
                 className="form-control"
                 disabled
               ></input>
