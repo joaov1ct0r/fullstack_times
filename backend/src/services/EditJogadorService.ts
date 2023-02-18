@@ -25,7 +25,7 @@ export default class EditJogadorService {
       id
     );
 
-    if (isJogadorRegistered) {
+    if (!isJogadorRegistered) {
       throw new BadRequest("Jogador não cadastrado!");
     }
 
