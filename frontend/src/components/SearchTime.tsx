@@ -7,7 +7,7 @@ export default function SearchTime() {
 
   const { handleSubmit, register, reset } = useFormTime();
   return (
-    <form className="d-flex" role="search" onSubmit={() => handleSubmit((data: ICreateTime) => {
+    <form className="d-flex" onSubmit={handleSubmit((data: ICreateTime) => {
       searchTime(data);
       reset()
     })}>
@@ -22,7 +22,7 @@ export default function SearchTime() {
         },
       })} className="form-control me-2" type="search" placeholder="Busque um time:" aria-label="Search" required />
 
-      <button className="btn btn-outline-success" type="submit">Buscar</button>
+      <button className="btn btn-outline-success" type="submit" >Buscar</button>
     </form>
   )
 }
