@@ -20,7 +20,7 @@ export default class DeleteJogadorService {
       id
     );
 
-    if (isJogadorRegistered) {
+    if (!isJogadorRegistered) {
       throw new BadRequest("Jogador não cadastrado!");
     }
 
