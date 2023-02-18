@@ -9,12 +9,10 @@ export default class GetJogadorRepository implements IGetJogadorRepository {
   ): Promise<IJogador | null> {
     const jogador = id
       ? prismaClient.jogador.findFirst({
-          where: { time_id: id },
+          where: { id },
         })
       : prismaClient.jogador.findFirst({
-          where: {
-            nome,
-          },
+          where: { nome },
         });
 
     return jogador;
