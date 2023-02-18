@@ -38,7 +38,7 @@ export default class EditJogadorService {
       throw new BadRequest("Time não cadastrado!");
     }
 
-    const isJogadorTeamPlayer = isTimeRegistered.Jogador!.find(
+    const isJogadorTeamPlayer = isTimeRegistered.Jogador?.find(
       (jogador: IJogador) => jogador.id === id
     );
 
