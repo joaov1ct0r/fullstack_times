@@ -11,6 +11,7 @@ export default function ListTime() {
         <tr>
           <th scope="col">Time ID</th>
           <th scope="col">Time Nome</th>
+          <th scope="col">Jogador ID</th>
           <th scope="col">Jogador Nome</th>
           <th scope="col">Jogador Idade</th>
           <th scope="col">Actions</th>
@@ -29,6 +30,7 @@ export default function ListTime() {
               {time.id}
             </td>
             <td>{time.nome}</td>
+            <td>{jogador.id}</td>
             <td>{jogador.nome}</td>
             <td>{jogador.idade}</td>
             <td>
