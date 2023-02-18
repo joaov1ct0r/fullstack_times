@@ -15,7 +15,6 @@ export default class App {
     this.server = express();
     this.middlewares();
     this.routes();
-    this.docsRoutes();
   }
 
   private async middlewares() {
@@ -45,6 +44,8 @@ export default class App {
             message: error.message,
             status: error.statusCode,
           });
+        } else {
+          return res.status(500).json({ error: "teste"})
         }
       }
     );
@@ -53,9 +54,6 @@ export default class App {
   private async routes() {
     this.server.use("/api/time", timeRouter);
     this.server.use("/api/jogador", jogadorRouter);
-  }
-
-  private docsRoutes() {
     this.server.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
   }
 }
