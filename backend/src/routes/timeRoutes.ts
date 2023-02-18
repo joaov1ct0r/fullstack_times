@@ -20,7 +20,7 @@ timeRouter.put("/edit", resolver.handle(editTimeController.handle));
 
 timeRouter.delete("/delete", resolver.handle(deleteTimeController.handle));
 
-timeRouter.get("/time", resolver.handle(getTimeController.handle));
+timeRouter.post("/time", resolver.handle(getTimeController.handle));
 
 timeRouter.get("/times", resolver.handle(getTimesController.handle));
 
