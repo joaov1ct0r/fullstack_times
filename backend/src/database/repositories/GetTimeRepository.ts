@@ -11,9 +11,7 @@ export default class GetTimeRepository implements IGetTimeRepository {
           },
         })
       : await prismaClient.time.findFirst({
-          where: {
-            nome,
-          },
+          where: { nome },
           include: {
             Jogador: true,
           },
