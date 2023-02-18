@@ -30,7 +30,19 @@ export default function EditJogadorModal() {
           <form
             className="modal-body"
             onSubmit={handleSubmit((data: IEditJogadorForm) => {
-              editJogador({id: data.id, nome: data.nome, idade: data.idade, time_id: data.time_id,});
+              console.log({
+                id: String(jogador.id), 
+                nome: data.nome, 
+                idade: data.idade, 
+                time_id: String(jogador.time_id)
+              })
+              
+              editJogador({
+                id: String(jogador.id), 
+                nome: data.nome, 
+                idade: data.idade, 
+                time_id: String(jogador.time_id)
+              });
 
               reset();
             })}
