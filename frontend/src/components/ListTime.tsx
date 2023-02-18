@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FiTrash, FiEdit } from "react-icons/fi";
 import IJogador from "../interfaces/IJogador";
 import useContextStates from "../hooks/useContextStates";
 
 export default function ListTime() {
-  const {time, setJogador, deleteJogador, } = useContextStates();
-
+  const { time, setJogador, deleteJogador, } = useContextStates();
   return (
     <table className="table bg-white w-75 mt-3 border border-dark">
       <thead className="text-center">
@@ -19,10 +18,10 @@ export default function ListTime() {
       </thead>
 
       <tbody>
-        {time ? time.Jogador?.map((jogador: IJogador) => {
+        {time ? time.Jogador.map((jogador: IJogador) => {
 
           return (<tr
-            className="text-center text-danger"
+            className="text-center"
             key={String(jogador.id)}
             id={String(jogador.id)}
           >
