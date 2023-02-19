@@ -4,6 +4,7 @@ import ICreateTime from "./ICreateTime";
 import IEditJogadorForm from "./IEditJogadorForm";
 import IEditTimeForm from "./IEditTimeForm";
 import IEditTimeProps from "./IEditTimeProps";
+import IError from "./IError";
 import IJogador from "./IJogador";
 import ITime from "./ITime";
 
@@ -47,4 +48,6 @@ export default interface ITimesContextType {
         errors: FieldErrors<IEditJogadorForm>;
     }
     deleteJogador(id: string): void
+    error: IError | undefined
+    setError: React.Dispatch<React.SetStateAction<IError | undefined>>
 }
