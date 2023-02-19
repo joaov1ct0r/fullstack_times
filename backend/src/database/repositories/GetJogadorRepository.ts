@@ -3,17 +3,23 @@ import IGetJogadorRepository from "../../interfaces/IGetJogadorRepository";
 import prismaClient from "../prismaClient";
 
 export default class GetJogadorRepository implements IGetJogadorRepository {
-  execute(
+  async execute(
     nome?: string | undefined,
     id?: number | undefined
   ): Promise<IJogador | null> {
     const jogador = id
-      ? prismaClient.jogador.findFirst({
+      ? await prismaClient.jogador.findUnique({
           where: { id },
         })
-      : prismaClient.jogador.findFirst({
+      : await prismaClient.jogador.findFirst({
           where: { nome },
         });
+
+    // let jogador;
+
+    // if (id) {
+    //   jogador = await prismaClient.jogador.find
+    // }
 
     return jogador;
   }
