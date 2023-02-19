@@ -33,7 +33,7 @@ export function TimesProvider(props: ITimesContextProps) {
 
     const [shouldFetchTime, setShouldFetchTime] = useState(false);
 
-    const [error, setError] = useState<IError>()
+    const [errorHandler, setErrorHandler] = useState<IError>()
 
     useEffect(() => {
       time ? searchTime({nome: String(time.nome)}) : null
@@ -43,14 +43,20 @@ export function TimesProvider(props: ITimesContextProps) {
       request.get<IGetTimesReq>("/api/time/times").then((response) => {
         setTimes(response.data.times)
       }).then (() => setShouldFetch(false))
-      .catch((error) => setError(error.response.data))
+      .catch((error) => {
+        if (error.response) setErrorHandler(error.response.data)
+          else setErrorHandler({status: 500, message: error.message})
+      })
     }, [shouldFetch])
 
     function createTime(data: ICreateTime) {
       request.post<ICreateTimeReq>("/api/time/create", {
         nome: data.nome
       }).then(() => setShouldFetch(true))
-      .catch((error) => setError(error.response.data))
+      .catch((error) => {
+        if (error.response) setErrorHandler(error.response.data)
+          else setErrorHandler({status: 500, message: error.message})
+      })
     }
 
     function editTime({ id, nome }: IEditTimeProps) {
@@ -58,7 +64,10 @@ export function TimesProvider(props: ITimesContextProps) {
         nome,
         id
       }).then(() => setShouldFetch(true))
-      .catch((error) => setError(error.response.data))
+      .catch((error) => {
+        if (error.response) setErrorHandler(error.response.data)
+          else setErrorHandler({status: 500, message: error.message})
+      })
     }
 
     function deleteTime(data: string) {
@@ -67,7 +76,10 @@ export function TimesProvider(props: ITimesContextProps) {
           id: data
         }
       }).then(() => setShouldFetch(true))
-      .catch((error) => setError(error.response.data))
+      .catch((error) => {
+        if (error.response) setErrorHandler(error.response.data)
+          else setErrorHandler({status: 500, message: error.message})
+      })
     }
 
     function searchTime({ nome }: ICreateTime) {
@@ -76,7 +88,10 @@ export function TimesProvider(props: ITimesContextProps) {
       }).then(response => {
         setTime(response.data.time)
       })
-      .catch((error) => setError(error.response.data))
+      .catch((error) => {
+        if (error.response) setErrorHandler(error.response.data)
+          else setErrorHandler({status: 500, message: error.message})
+      })
     }
 
     function useFormTime() {
@@ -116,7 +131,10 @@ export function TimesProvider(props: ITimesContextProps) {
         idade: data.idade,
         time_id: data.time_id
       }).then(() => setShouldFetch(true))
-      .catch((error) => setError(error.response.data))
+      .catch((error) => {
+        if (error.response) setErrorHandler(error.response.data)
+          else setErrorHandler({status: 500, message: error.message})
+      })
     }
 
     function useFormCreateJogador() {
@@ -147,7 +165,10 @@ export function TimesProvider(props: ITimesContextProps) {
         setShouldFetch(true)
         setShouldFetchTime(true)
       })
-      .catch((error) => setError(error.response.data))
+      .catch((error) => {
+        if (error.response) setErrorHandler(error.response.data)
+          else setErrorHandler({status: 500, message: error.message})
+      })
     }
 
     function useFormEditJogador() {
@@ -177,7 +198,10 @@ export function TimesProvider(props: ITimesContextProps) {
         setShouldFetch(true)
         setShouldFetchTime(true)
       })
-      .catch((error) => setError(error.response.data))
+      .catch((error) => {
+        if (error.response) setErrorHandler(error.response.data)
+          else setErrorHandler({status: 500, message: error.message})
+      })
     }
     
     return (
@@ -202,8 +226,8 @@ export function TimesProvider(props: ITimesContextProps) {
             editJogador,
             useFormEditJogador,
             deleteJogador,
-            error, 
-            setError
+            errorHandler, 
+            setErrorHandler
           }
           }>
           {props.children}
