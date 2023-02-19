@@ -48,6 +48,6 @@ export default interface ITimesContextType {
         errors: FieldErrors<IEditJogadorForm>;
     }
     deleteJogador(id: string): void
-    error: IError | undefined
-    setError: React.Dispatch<React.SetStateAction<IError | undefined>>
+    errorHandler: IError | undefined
+    setErrorHandler: React.Dispatch<React.SetStateAction<IError | undefined>>
 }
