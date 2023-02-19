@@ -22,7 +22,9 @@ export default function useContextStates() {
         useFormCreateJogador,
         editJogador,
         useFormEditJogador,
-        deleteJogador
+        deleteJogador,
+        error,
+        setError
     } = useContext(TimesContext) as ITimesContextType
 
     return {
@@ -44,6 +46,8 @@ export default function useContextStates() {
         useFormCreateJogador,
         editJogador,
         useFormEditJogador,
-        deleteJogador
+        deleteJogador,
+        error,
+        setError
     }
 }
