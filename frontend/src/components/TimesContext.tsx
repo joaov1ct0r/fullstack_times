@@ -9,6 +9,7 @@ import IDeleteTimeReq from "../interfaces/IDeleteTimeReq";
 import IEditJogadorForm from "../interfaces/IEditJogadorForm";
 import IEditTimeForm from "../interfaces/IEditTimeForm";
 import IEditTimeProps from "../interfaces/IEditTimeProps";
+import IError from "../interfaces/IError";
 import IGetTimesReq from "../interfaces/IGetTimesReq";
 import IJogador from "../interfaces/IJogador";
 import ISearchTimeReq from "../interfaces/ISearchTimeReq";
@@ -32,6 +33,8 @@ export function TimesProvider(props: ITimesContextProps) {
 
     const [shouldFetchTime, setShouldFetchTime] = useState(false);
 
+    const [error, setError] = useState<IError>()
+
     useEffect(() => {
       time ? searchTime({nome: String(time.nome)}) : null
     }, [shouldFetchTime])
@@ -40,12 +43,14 @@ export function TimesProvider(props: ITimesContextProps) {
       request.get<IGetTimesReq>("/api/time/times").then((response) => {
         setTimes(response.data.times)
       }).then (() => setShouldFetch(false))
+      .catch((error) => setError(error.response.data))
     }, [shouldFetch])
 
     function createTime(data: ICreateTime) {
       request.post<ICreateTimeReq>("/api/time/create", {
         nome: data.nome
       }).then(() => setShouldFetch(true))
+      .catch((error) => setError(error.response.data))
     }
 
     function editTime({ id, nome }: IEditTimeProps) {
@@ -53,6 +58,7 @@ export function TimesProvider(props: ITimesContextProps) {
         nome,
         id
       }).then(() => setShouldFetch(true))
+      .catch((error) => setError(error.response.data))
     }
 
     function deleteTime(data: string) {
@@ -61,6 +67,7 @@ export function TimesProvider(props: ITimesContextProps) {
           id: data
         }
       }).then(() => setShouldFetch(true))
+      .catch((error) => setError(error.response.data))
     }
 
     function searchTime({ nome }: ICreateTime) {
@@ -69,6 +76,7 @@ export function TimesProvider(props: ITimesContextProps) {
       }).then(response => {
         setTime(response.data.time)
       })
+      .catch((error) => setError(error.response.data))
     }
 
     function useFormTime() {
@@ -108,6 +116,7 @@ export function TimesProvider(props: ITimesContextProps) {
         idade: data.idade,
         time_id: data.time_id
       }).then(() => setShouldFetch(true))
+      .catch((error) => setError(error.response.data))
     }
 
     function useFormCreateJogador() {
@@ -138,6 +147,7 @@ export function TimesProvider(props: ITimesContextProps) {
         setShouldFetch(true)
         setShouldFetchTime(true)
       })
+      .catch((error) => setError(error.response.data))
     }
 
     function useFormEditJogador() {
@@ -167,6 +177,7 @@ export function TimesProvider(props: ITimesContextProps) {
         setShouldFetch(true)
         setShouldFetchTime(true)
       })
+      .catch((error) => setError(error.response.data))
     }
     
     return (
@@ -190,7 +201,9 @@ export function TimesProvider(props: ITimesContextProps) {
             useFormCreateJogador,
             editJogador,
             useFormEditJogador,
-            deleteJogador
+            deleteJogador,
+            error, 
+            setError
           }
           }>
           {props.children}
