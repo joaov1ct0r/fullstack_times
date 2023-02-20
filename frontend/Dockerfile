@@ -18,10 +18,10 @@ FROM nginx as production
 
 EXPOSE 5173
 
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
-
 COPY --from=development /usr/src/app/package*.json ./
 
-COPY --from=development /usr/src/app/dist /usr/share/nginx/html
+COPY --from=development ./nginx/default.conf /etc/nginx/conf.d/default.conf
+
+COPY --from=development /app/dist /usr/share/nginx/html
 
 RUN npm install --omit=dev --legacy-peer-deps
