@@ -51,9 +51,6 @@ services:
             dockerfile: Dockerfile
             target: development
         image: react_times_dev
-        depends_on:
-            - db
-            - api_times_dev
         entrypoint: ['/bin/sh', './src/scripts/entrypoint.sh']
         volumes:
             - ./frontend:/usr/src/app
