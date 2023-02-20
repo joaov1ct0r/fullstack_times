@@ -61,3 +61,15 @@ services:
         restart: always
         ports:
             - 5173:5173
+
+    nginx:
+        depends_on:
+            - api_times
+            - react_times
+        restart: always
+        build:
+            dockerfile: Dockerfile
+            context: ./nginx
+        ports:
+        - "5173:5173"
+
