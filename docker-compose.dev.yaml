@@ -51,6 +51,8 @@ services:
             dockerfile: Dockerfile
             target: development
         image: react_times_dev
+        depends_on:
+            - api_times_dev
         entrypoint: ['/bin/sh', './src/scripts/entrypoint.sh']
         volumes:
             - ./frontend:/usr/src/app
@@ -58,6 +60,8 @@ services:
             - .env
         environment:
             - NODE_ENV=${NODE_ENV}
+            - VITE_API=${VITE_API}
+            - VITE_API_PORT=${VITE_API_PORT}
         restart: always
         ports:
             - 5173:5173
