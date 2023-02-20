@@ -50,7 +50,6 @@ services:
             target: production
         image: react_times
         depends_on:
-            - db
             - api_times
         entrypoint: ['/bin/sh', './src/scripts/entrypoint.sh']
         volumes:
