@@ -9,19 +9,19 @@ RUN npm cache clean --force && npm cache verify
 
 RUN npm install
 
-ADD . /usr/src/app
+COPY . ./
 
 RUN npm run build
 
 # Stage 2 Production
 FROM nginx as production
 
+COPY --from=development /usr/src/app/dist /usr/share/nginx/html
+
+RUN rm /etc/nginx/conf.d/default.conf
+
+COPY --from=development /usr/src/app/nginx/default.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 5173
 
-COPY --from=development /usr/src/app/package*.json ./
-
-COPY --from=development ./nginx/default.conf /etc/nginx/conf.d/default.conf
-
-COPY --from=development /app/dist /usr/share/nginx/html
-
-RUN npm install --omit=dev --legacy-peer-deps
+CMD ["nginx", "-g", "daemon off;"]
