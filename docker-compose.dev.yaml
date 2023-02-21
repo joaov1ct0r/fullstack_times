@@ -60,8 +60,6 @@ services:
             - .env
         environment:
             - NODE_ENV=${NODE_ENV}
-            - VITE_API=${VITE_API}
-            - VITE_API_PORT=${VITE_API_PORT}
         restart: always
         ports:
             - 5173:5173
