@@ -5,7 +5,7 @@ import IEditTimeForm from "../interfaces/IEditTimeForm";
 export default function EditTimeModal() {
   const { time, editTime, useFormEditTime } = useContextStates();
   
-  const { handleSubmit, register, reset } = useFormEditTime();
+  const { handleSubmit, register, reset, errors } = useFormEditTime();
   
   return (
     <div
@@ -65,6 +65,8 @@ export default function EditTimeModal() {
                 className="form-control"
                 required
               ></input>
+              <br />
+              <p className="text text-danger">{errors.nome?.message}</p>
             </div>
 
             <button
