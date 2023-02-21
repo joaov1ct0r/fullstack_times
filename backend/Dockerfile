@@ -18,6 +18,8 @@ FROM node as production
 
 WORKDIR /usr/src/app
 
+COPY --from=development /usr/src/app/prisma ./prisma
+
 COPY --from=development /usr/src/app/src/scripts ./src/scripts
 
 COPY --from=development /usr/src/app/package*.json ./
