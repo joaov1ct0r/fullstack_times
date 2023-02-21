@@ -1,4 +1,4 @@
-# fullstack_times
+# react_nodejs_e-times
 
 <h1>EM DESENVOLVIMENTO!</h1>
 
@@ -32,7 +32,7 @@
 <h3>VARIAVEIS DE AMBIENTE</h3>
 <hr>
 
-<p>ABRA O ARQUIVO .env E ALTERE AS VARIAVEIS DE AMBIENTE COM SEUS DADOS(USE .env.example COMO EXEMPLO)</p>
+<p>CRIE O ARQUIVO .env E ALTERE AS VARIAVEIS DE AMBIENTE COM SEUS DADOS(USE .env.example COMO EXEMPLO)</p>
 
 <ul>
   <li>SERVER_HOST = HOST DO SEU SERVER</li>
