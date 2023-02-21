@@ -5,7 +5,7 @@ import ICreateTime from "../interfaces/ICreateTime";
 export default function Modal(): JSX.Element {
   const { createTime, useFormTime } = useContextStates();
 
-  const { handleSubmit, register, reset } = useFormTime();
+  const { handleSubmit, register, reset, errors } = useFormTime();
 
   return (
     <div
@@ -55,6 +55,8 @@ export default function Modal(): JSX.Element {
                 className="form-control"
                 required
               ></input>
+              <br />
+              <p className="text text-danger">{errors.nome?.message}</p>
             </div>
 
             <button
