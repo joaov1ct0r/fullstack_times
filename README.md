@@ -27,7 +27,7 @@
 <h3>GIT</h3>
 <hr>
 
-<p>FAÇA O DOWNLOAD DOS ARQUIVOS OU USE SSH:<br><code>git pull git@github.com:joaov1ct0r/fullstack_times.git</code></p>
+<p>FAÇA O DOWNLOAD DOS ARQUIVOS OU USE SSH:<br><code>git pull git@github.com:joaov1ct0r/react_nodejs_e-times.git</code></p>
 
 <h3>VARIAVEIS DE AMBIENTE</h3>
 <hr>
