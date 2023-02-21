@@ -5,7 +5,7 @@ import useContextStates from "../hooks/useContextStates";
 export default function EditJogadorModal() {
   const { jogador, editJogador, useFormEditJogador } = useContextStates();
   
-  const { handleSubmit, register, reset } = useFormEditJogador();
+  const { handleSubmit, register, reset, errors } = useFormEditJogador();
   return (
     <div
       className="modal fade"
@@ -86,6 +86,8 @@ export default function EditJogadorModal() {
                 className="form-control"
                 required
               ></input>
+              <br />
+              <p className="text text-danger">{errors.nome?.message}</p>
             </div>
 
             <div className="input-group mb-3">
@@ -105,6 +107,8 @@ export default function EditJogadorModal() {
                 className="form-control"
                 required
               ></input>
+              <br />
+              <p className="text text-danger">{errors.idade?.message}</p>
             </div>
 
             <button
