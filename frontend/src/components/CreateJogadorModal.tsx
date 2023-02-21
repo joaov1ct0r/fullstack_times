@@ -5,7 +5,7 @@ import useContextStates from "../hooks/useContextStates";
 export default function CreateJogadorModal() {
   const { time, useFormCreateJogador, createJogador } = useContextStates();
   
-  const { handleSubmit, register, reset } = useFormCreateJogador();
+  const { handleSubmit, register, reset, errors } = useFormCreateJogador();
 
   return (
     <div
@@ -66,6 +66,8 @@ export default function CreateJogadorModal() {
                 className="form-control"
                 required
               ></input>
+              <br />
+              <p className="text text-danger">{errors.nome?.message}</p>
             </div>
 
             <div className="input-group mb-3">
@@ -85,6 +87,8 @@ export default function CreateJogadorModal() {
                 className="form-control"
                 required
               ></input>
+              <br />
+              <p className="text text-danger">{errors.idade?.message}</p>
             </div>
 
             <button
