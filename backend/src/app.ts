@@ -45,7 +45,13 @@ export default class App {
             status: error.statusCode,
           });
         } else {
-          return res.status(500).json({ error: "teste"})
+          const error = new Internal("Erro interno")
+          return res.status(error.statusCode).json(
+            { 
+              error: error.message, 
+              status: error.statusCode
+            }
+          )
         }
       }
     );
