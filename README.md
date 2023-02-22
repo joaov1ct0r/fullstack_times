@@ -5,7 +5,7 @@
 <h2>Sobre</h2>
 
 <h3>
-<p>Projeto Full Stack com Front End para criar Times e Jogadores de E-Sports e no Back End uma API para validação de dados e armazenamento dos dados</p>
+<p>Projeto Full Stack com Front End para criar Times e Jogadores de E-Sports e no Back End uma API para validação e armazenamento dos dados</p>
 <p>Ambientes de produção e desenvolvimento criados em containers Docker utilizando Dockerfile para multi-stage building e Docker Compose para orquestração de containers.</p>
 </h3>
 
