@@ -6,6 +6,7 @@
 
 <h3>
 Projeto Full Stack com Front End para criar times e jogadores de e-Sports e no Back End uma API para validação e armazenamento de dados
+
   
 Front End:
 Aplicação React utilizando TypeScript com biblioteca ContextAPI para gerenciamento de estado e React Router DOM para roteamento de componentes, Aplicação com 2 páginas, Página “/” para listar, cadastrar, editar, deletar times e cadastrar jogador e Página “/times” para listar um time, editar e deletar seus jogadores, componentes estilizados utilizando BootStrap e React Hook Form para gerenciamento de formulários, testes unitários e de integração feitos com Jest e Testing Library, ambiente de desenvolvimento criado em container Docker utilizando Dockerfile para multi stage building e Docker Compose para orquestração dos containers.
