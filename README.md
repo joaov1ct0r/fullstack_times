@@ -5,8 +5,14 @@
 <h2>Sobre</h2>
 
 <h3>
-<p>Projeto Full Stack com Front End para criar Times e Jogadores de E-Sports e no Back End uma API para validação e armazenamento dos dados</p>
-<p>Ambientes de produção e desenvolvimento criados em containers Docker utilizando Dockerfile para multi-stage building e Docker Compose para orquestração de containers.</p>
+Projeto Full Stack com Front End para criar times e jogadores de e-Sports e no Back End uma API para validação e armazenamento de dados
+
+Front End:
+Aplicação React utilizando TypeScript com biblioteca ContextAPI para gerenciamento de estado e React Router DOM para roteamento de componentes, Aplicação com 2 páginas, Página “/” para listar, cadastrar, editar, deletar times e cadastrar jogador e Página “/times” para listar um time, editar e deletar seus jogadores, componentes estilizados utilizando BootStrap e React Hook Form para gerenciamento de formulários, testes unitários e de integração feitos com Jest e Testing Library, ambiente de desenvolvimento criado em container Docker utilizando Dockerfile para multi stage building e Docker Compose para orquestração dos containers.
+
+Back End:
+REST API com rotas para cadastro, edições, exclusões e listagem de times e jogadores, feita com JavaScript utilizando o runtime NodeJS com express
+e TypeScript, autenticando dados de entrada com Joi, criando models, migrations e armazenando os dados no banco de dados PostgreSQL com ORM Prisma, testes unitários e de integração feitos com Jest e SuperTest, ambientes de produção e desenvolvimento criados em containers Docker utilizando Dockerfile para multi stage building e Docker Compose.
 </h3>
 
 <h2>Requisitos</h2>
