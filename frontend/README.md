@@ -4,23 +4,7 @@
 
 <h2>Sobre</h2>
 
-<p>App para cadastrar times e jogadores, Inicialmente 1 button para que um modal com form para cadastro se abra.</p>
-
-<p>Apos o modal se abrir um form com 3 inputs e 2 buttons estarão presentes.</p>
-
-<p>inputs: Valor da finança, Data da finança, Descrição da finança.</p>
-
-<p>buttons: fechar modal, criar cadastro.</p>
-
-<p>Apos criar uma finança uma linha sera criada na tabela, contendo a finança cadastrada e um botão para deletar a finança.</p>
-
-<p>Header: O Header contem 3 items: Home, Entradas, Saidas.</p>
-
-<p>Home: Contem todas as finanças.</p>
-
-<p>Entradas: Contem somente as entradas(finanças positivas).</p>
-
-<p>Saidas: Contem somente as saidas(finanças negativas).</p>
+<p>Aplicação React utilizando TypeScript com biblioteca ContextAPI para gerenciamento de estado e React Router DOM para roteamento de componentes, Aplicação com 2 páginas, Página “/” para listar, cadastrar, editar, deletar times e cadastrar jogador e Página “/times” para listar um time, editar e deletar seus jogadores, componentes estilizados utilizando BootStrap e React Hook Form para gerenciamento de formulários, testes unitários e de integração feitos com Jest e Testing Library, ambiente de desenvolvimento criado em container Docker utilizando Dockerfile para multi stage building e Docker Compose para orquestração dos containers.</p>
 
 <h2>Requisitos</h2>
 
