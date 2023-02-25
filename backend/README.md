@@ -4,10 +4,8 @@
 
 <h2>Sobre</h2>
 
-<h3>
-<p>REST API para cadastro de times e jogadores feita com JavaScript utilizando o runtime NodeJS com o framework Express e TypeScript, autenticando dados de entrada com a biblioteca Joi, criando models, migrations e armazenando os dados no banco de dados PostgreSQL com o ORM Prisma.</p>
-<p>Ambientes de produção e desenvolvimento criados em containers Docker utilizando Dockerfile para multi-stage building e Docker Compose para orquestração de containers.</p>
-</h3>
+<p>REST API com rotas para cadastro, edições, exclusões e listagem de times e jogadores, feita com JavaScript utilizando o runtime NodeJS com express
+e TypeScript, autenticando dados de entrada com Joi, criando models, migrations e armazenando os dados no banco de dados PostgreSQL com ORM Prisma, testes unitários e de integração feitos com Jest e SuperTest, ambientes de produção e desenvolvimento criados em containers Docker utilizando Dockerfile para multi stage building e Docker Compose.</p>
 
 <h2>Requisitos</h2>
 
