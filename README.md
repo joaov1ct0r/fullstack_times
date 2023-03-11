@@ -19,8 +19,6 @@ e TypeScript, autenticando dados de entrada com Joi, criando models, migrations 
 <ul>
   <li>NodeJS</li>
   <br>
-  <li>NPM</li>
-  <br>
   <li>Docker</li>
   <br>
   <li>Docker Compose</li>
