@@ -6,8 +6,23 @@ import CreateTimeRepository from "../database/repositories/CreateTimeRepository"
 import CreateTimeService from "../services/CreateTimeService";
 
 export default class CreateTimeController {
+  private readonly validateTime: ValidateTime;
+  private readonly getTimeRepository: GetTimeRepository;
+  private readonly createTimeRepository: CreateTimeRepository;
+  private readonly createTimeService: CreateTimeService;
+
+  constructor() {
+    this.validateTime = new ValidateTime();
+    this.getTimeRepository = new GetTimeRepository();
+    this.createTimeRepository = new CreateTimeRepository();
+    this.createTimeService = new CreateTimeService(
+      this.getTimeRepository,
+      this.createTimeRepository
+    );
+  }
+
   async handle(req: Request, res: Response) {
-    const { error } = new ValidateTime().validateCreateTime(req.body);
+    const { error } = this.validateTime.validateCreateTime(req.body);
 
     if (error) {
       throw new BadRequest(error.message);
@@ -15,17 +30,8 @@ export default class CreateTimeController {
 
     const { nome } = req.body;
 
-    const getTimeRepository = new GetTimeRepository();
-
-    const createTimeRepository = new CreateTimeRepository();
-
-    const createTimeService = new CreateTimeService(
-      getTimeRepository,
-      createTimeRepository
-    );
-
     try {
-      const time = await createTimeService.execute(nome);
+      const time = await this.createTimeService.execute(nome);
 
       return res
         .status(201)
