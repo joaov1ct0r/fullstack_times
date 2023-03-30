@@ -6,8 +6,23 @@ import DeleteTimeRepository from "../database/repositories/DeleteTimeRepository"
 import DeleteTimeService from "../services/DeleteTimeService";
 
 export default class DeleteTimeController {
+  private readonly validateTime: ValidateTime;
+  private readonly getTimeRepository: GetTimeRepository;
+  private readonly deleteTimeRepository: DeleteTimeRepository;
+  private readonly deleteTimeService: DeleteTimeService;
+
+  constructor() {
+    this.validateTime = new ValidateTime();
+    this.getTimeRepository = new GetTimeRepository();
+    this.deleteTimeRepository = new DeleteTimeRepository();
+    this.deleteTimeService = new DeleteTimeService(
+      this.getTimeRepository,
+      this.deleteTimeRepository
+    );
+  }
+
   async handle(req: Request, res: Response) {
-    const { error } = new ValidateTime().validateDeleteTime(req.body);
+    const { error } = this.validateTime.validateDeleteTime(req.body);
 
     if (error) {
       throw new BadRequest(error.message);
@@ -15,17 +30,8 @@ export default class DeleteTimeController {
 
     const { id } = req.body;
 
-    const getTimeRepository = new GetTimeRepository();
-
-    const deleteTimeRepository = new DeleteTimeRepository();
-
-    const deleteTimeService = new DeleteTimeService(
-      getTimeRepository,
-      deleteTimeRepository
-    );
-
     try {
-      await deleteTimeService.execute(Number(id));
+      await this.deleteTimeService.execute(Number(id));
 
       return res.status(204).send();
     } catch (err: any) {
