@@ -6,8 +6,23 @@ import DeleteJogadorRepository from "../database/repositories/DeleteJogadorRepos
 import DeleteJogadorService from "../services/DeleteJogadorService";
 
 export default class DeleteJogadorController {
+  private readonly validateJogador: ValidateJogador;
+  private readonly getJogadorRepository: GetJogadorRepository;
+  private readonly deleteJogadorRepository: DeleteJogadorRepository;
+  private readonly deleteJogadorService: DeleteJogadorService;
+
+  constructor() {
+    this.validateJogador = new ValidateJogador();
+    this.getJogadorRepository = new GetJogadorRepository();
+    this.deleteJogadorRepository = new DeleteJogadorRepository();
+    this.deleteJogadorService = new DeleteJogadorService(
+      this.getJogadorRepository,
+      this.deleteJogadorRepository
+    );
+  }
+
   async handle(req: Request, res: Response) {
-    const { error } = new ValidateJogador().validateDeleteJogador(req.body);
+    const { error } = this.validateJogador.validateDeleteJogador(req.body);
 
     if (error) {
       throw new BadRequest(error.message);
@@ -15,17 +30,8 @@ export default class DeleteJogadorController {
 
     const { id } = req.body;
 
-    const getJogadorRepository = new GetJogadorRepository();
-
-    const deleteJogadorRepository = new DeleteJogadorRepository();
-
-    const deleteJogadorService = new DeleteJogadorService(
-      getJogadorRepository,
-      deleteJogadorRepository
-    );
-
     try {
-      await deleteJogadorService.execute(Number(id));
+      await this.deleteJogadorService.execute(Number(id));
 
       return res.status(204).send();
     } catch (err: any) {
