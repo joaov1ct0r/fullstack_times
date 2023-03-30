@@ -7,8 +7,26 @@ import CreateJogadorRepository from "../database/repositories/CreateJogadorRepos
 import CreateJogadorService from "../services/CreateJogadorService";
 
 export default class CreateJogadorController {
+  private readonly validateJogador: ValidateJogador;
+  private readonly getJogadorRepository: GetJogadorRepository;
+  private readonly getTimeRepository: GetTimeRepository;
+  private readonly createJogadorRepository: CreateJogadorRepository;
+  private readonly createJogadorService: CreateJogadorService;
+
+  constructor() {
+    this.validateJogador = new ValidateJogador();
+    this.getJogadorRepository = new GetJogadorRepository();
+    this.getTimeRepository = new GetTimeRepository();
+    this.createJogadorRepository = new CreateJogadorRepository();
+    this.createJogadorService = new CreateJogadorService(
+      this.getJogadorRepository,
+      this.getTimeRepository,
+      this.createJogadorRepository
+    );
+  }
+
   async handle(req: Request, res: Response) {
-    const { error } = new ValidateJogador().validateCreateJogador(req.body);
+    const { error } = this.validateJogador.validateCreateJogador(req.body);
 
     if (error) {
       throw new BadRequest(error.message);
@@ -16,20 +34,8 @@ export default class CreateJogadorController {
 
     const { nome, idade, time_id } = req.body;
 
-    const getJogadorRepository = new GetJogadorRepository();
-
-    const getTimeRepository = new GetTimeRepository();
-
-    const createJogadorRepository = new CreateJogadorRepository();
-
-    const createJogadorService = new CreateJogadorService(
-      getJogadorRepository,
-      getTimeRepository,
-      createJogadorRepository
-    );
-
     try {
-      const jogador = await createJogadorService.execute(
+      const jogador = await this.createJogadorService.execute(
         nome,
         Number(idade),
         Number(time_id)
