@@ -6,8 +6,23 @@ import EditTimeRepository from "../database/repositories/EditTimeRepository";
 import EditTimeService from "../services/EditTimeService";
 
 export default class EditTimeController {
+  private readonly validateTime: ValidateTime;
+  private readonly getTimeRepository: GetTimeRepository;
+  private readonly editTimeRepository: EditTimeRepository;
+  private readonly editTimeService: EditTimeService;
+
+  constructor() {
+    this.validateTime = new ValidateTime();
+    this.getTimeRepository = new GetTimeRepository();
+    this.editTimeRepository = new EditTimeRepository();
+    this.editTimeService = new EditTimeService(
+      this.getTimeRepository,
+      this.editTimeRepository
+    );
+  }
+
   async handle(req: Request, res: Response) {
-    const { error } = new ValidateTime().validateEditTime(req.body);
+    const { error } = this.validateTime.validateEditTime(req.body);
 
     if (error) {
       throw new BadRequest(error.message);
@@ -15,17 +30,8 @@ export default class EditTimeController {
 
     const { id, nome } = req.body;
 
-    const getTimeRepository = new GetTimeRepository();
-
-    const editTimeRepository = new EditTimeRepository();
-
-    const editTimeService = new EditTimeService(
-      getTimeRepository,
-      editTimeRepository
-    );
-
     try {
-      await editTimeService.execute(Number(id), nome);
+      await this.editTimeService.execute(Number(id), nome);
 
       return res.status(204).send();
     } catch (err: any) {
