@@ -5,8 +5,18 @@ import GetTimeRepository from "../database/repositories/GetTimeRepository";
 import GetTimeService from "../services/GetTimeService";
 
 export default class GetTimeController {
+  private readonly validateTime: ValidateTime;
+  private readonly getTimeRepository: GetTimeRepository;
+  private readonly getTimeService: GetTimeService;
+
+  constructor() {
+    this.validateTime = new ValidateTime();
+    this.getTimeRepository = new GetTimeRepository();
+    this.getTimeService = new GetTimeService(this.getTimeRepository);
+  }
+
   async handle(req: Request, res: Response) {
-    const { error } = new ValidateTime().validateGetTime(req.body);
+    const { error } = this.validateTime.validateGetTime(req.body);
 
     if (error) {
       throw new BadRequest(error.message);
@@ -14,12 +24,8 @@ export default class GetTimeController {
 
     const { nome } = req.body;
 
-    const getTimeRepository = new GetTimeRepository();
-
-    const getTimeService = new GetTimeService(getTimeRepository);
-
     try {
-      const time = await getTimeService.execute(nome);
+      const time = await this.getTimeService.execute(nome);
 
       return res.status(200).json({ time, message: "Success" });
     } catch (err: any) {
