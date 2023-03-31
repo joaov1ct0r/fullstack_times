@@ -7,8 +7,26 @@ import EditJogadorRepository from "../database/repositories/EditJogadorRepositor
 import EditJogadorService from "../services/EditJogadorService";
 
 export default class EditJogadorController {
+  private readonly validateJogador: ValidateJogador;
+  private readonly getJogadorRepository: GetJogadorRepository;
+  private readonly getTimeRepository: GetTimeRepository;
+  private readonly editJogadorRepository: EditJogadorRepository;
+  private readonly editJogadorService: EditJogadorService;
+
+  constructor() {
+    this.validateJogador = new ValidateJogador();
+    this.getJogadorRepository = new GetJogadorRepository();
+    this.getTimeRepository = new GetTimeRepository();
+    this.editJogadorRepository = new EditJogadorRepository();
+    this.editJogadorService = new EditJogadorService(
+      this.getJogadorRepository,
+      this.getTimeRepository,
+      this.editJogadorRepository
+    );
+  }
+
   async handle(req: Request, res: Response) {
-    const { error } = new ValidateJogador().validateEditJogador(req.body);
+    const { error } = this.validateJogador.validateEditJogador(req.body);
 
     if (error) {
       throw new BadRequest(error.message);
@@ -16,20 +34,8 @@ export default class EditJogadorController {
 
     const { id, nome, idade, time_id } = req.body;
 
-    const getJogadorRepository = new GetJogadorRepository();
-
-    const getTimeRepository = new GetTimeRepository();
-
-    const editJogadorRepository = new EditJogadorRepository();
-
-    const editJogadorService = new EditJogadorService(
-      getJogadorRepository,
-      getTimeRepository,
-      editJogadorRepository
-    );
-
     try {
-      await editJogadorService.execute(
+      await this.editJogadorService.execute(
         Number(id),
         nome,
         Number(idade),
