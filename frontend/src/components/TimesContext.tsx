@@ -83,9 +83,7 @@ export function TimesProvider(props: ITimesContextProps) {
     }
 
     function searchTime({ nome }: ICreateTime) {
-      request.post<ISearchTimeReq>("/api/time/time", {
-        nome
-      }).then(response => {
+      request.post<ISearchTimeReq>(`/api/time/time/${nome}`).then(response => {
         setTime(response.data.time)
       })
       .catch((error) => {
