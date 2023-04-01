@@ -16,13 +16,13 @@ export default class GetTimeController {
   }
 
   async handle(req: Request, res: Response) {
-    const { error } = this.validateTime.validateGetTime(req.body);
+    const { error } = this.validateTime.validateGetTime(req.params);
 
     if (error) {
       throw new BadRequest(error.message);
     }
 
-    const { nome } = req.body;
+    const { nome } = req.params;
 
     try {
       const time = await this.getTimeService.execute(nome);
